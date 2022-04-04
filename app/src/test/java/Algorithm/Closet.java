@@ -25,7 +25,6 @@ public class Closet {
     };
 
 
-
     public double rateClothing(Clothing c){
         return 0;
     }

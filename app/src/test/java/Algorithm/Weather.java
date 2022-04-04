@@ -5,11 +5,12 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.io.BufferedReader;
+
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+
+import javax.script.*;
+
+
 
 
 
@@ -17,7 +18,8 @@ public class Weather {
     private int dailyMin;
     private int dailyMax;
     private int dailyAvg;
-    private String WFull;
+    private String WFullSTRING;
+
     private URL url;
     private ArrayList hourly = new ArrayList<Integer>();
 
@@ -34,7 +36,22 @@ public class Weather {
     BufferedReader in = new BufferedReader(reader);
 
     //Print the line read through bufferedreader
-        WFull=in.readLine();
+        WFullSTRING=in.readLine();
+    }
+
+
+    //Unix to Military - NEEDS OFFSET
+    public static double UnixToMilitary(int unix){
+        int leftoverSeconds = unix%86400; //86400 = amount of seconds in a day
+
+        int hours = leftoverSeconds/3600; //3600 = number of seconds in an hour
+
+        leftoverSeconds %= 3600; //finds the seconds leftover after taking the hours out
+
+        int minutes = leftoverSeconds / 60;
+
+        return hours + (minutes/60);
+
     }
 
 

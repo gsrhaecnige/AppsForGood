@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AppsForGood</string>
+    <string name="location_search_hint">Enter your location</string>
+    <string name="clothing_redirect_hint">See clothing recommendations</string>
+    <string name="top">Tops</string>
+    <string name="bottom">Bottoms</string>
+    <string name="shoes">Shoes</string>
+    <string name="accessories">Accessories</string>
 </resources>

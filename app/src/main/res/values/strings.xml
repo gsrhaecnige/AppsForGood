@@ -2,8 +2,15 @@
     <string name="app_name">AppsForGood</string>
     <string name="location_search_hint">Enter your location</string>
     <string name="clothing_redirect_hint">See clothing recommendations</string>
+    <string name="forecast_redirect_hint">See weather forecast</string>
+    <string name="clothing">Clothing</string>
+    <string name="forecast">Forecast</string>
+    <string name="weather_summary">Summary</string>
+    <string name="hourly">Hourly Forecast</string>
+    <string name="daily">Daily Forecast</string>
     <string name="top">Tops</string>
     <string name="bottom">Bottoms</string>
     <string name="shoes">Shoes</string>
     <string name="accessories">Accessories</string>
+    <string name="back">Back to Home</string>
 </resources>

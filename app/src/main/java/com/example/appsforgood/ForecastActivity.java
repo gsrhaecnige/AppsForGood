@@ -17,4 +17,8 @@ public class ForecastActivity extends MainActivity {
     public void performClothing(View view) {
         super.performClothing(view);
     }
+
+    public void performMain(View view) {
+        super.performMain(view);
+    }
 }

@@ -6,33 +6,24 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
 public class main {
 
+    private int[][] tops;
+    private int numTops = 4;
 
     public static void main(String[] args) throws IOException {
+        populateTopList();
+    }
 
-        System.out.println("Hello World");
-
-        String timetest = null;
-
-        // Create a new value object to hold the URL
-        URL url = new URL("https://api.openweathermap.org/data/2.5/onecall?lat=42.2713&lon=-71.798889&exclude=minutely&units=imperial&appid=eb14331301c3974f2a420e33f3c2d3c8");
-
-        // Open a connection on the URL and cast the response
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
-        //Make stream reader from connection
-        InputStreamReader reader = new InputStreamReader(connection.getInputStream());
-
-        //Make bufferedreader from/for the inputstream
-        BufferedReader in = new BufferedReader(reader);
-
-        //Print the line read through bufferedreader
-        System.out.println(in.readLine());
-        System.out.println(timetest = in.readLine().substring(in.readLine().indexOf("1648"),in.readLine().indexOf("1648")+6));
-
-
+    private static void populateTopList(){
+        for (int i = 0; i < numTops; i++){
+            tops[0][i] = i + 1;
+            //each top is represented by a number that correspond to the relative sleeve length
+            //tank 1, t-shirt 2, long sleeve 3, sweater 4
+        }
 
     }
+
 }
 

@@ -14,7 +14,14 @@ public class ForecastActivity extends MainActivity {
         setContentView(R.layout.activity_forecast);
     }
 
+    public void testData(){
+    }
+
     public void performClothing(View view) {
         super.performClothing(view);
+    }
+
+    public void performMain(View view) {
+        super.performMain(view);
     }
 }

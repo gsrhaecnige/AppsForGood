@@ -23,7 +23,7 @@ public class Top extends Clothing {
 
     }
 
-    public static String top(double feelsLike){
+    public static String getTop(double feelsLike){
         int rating = whatTempRange(feelsLike);
 
         for (int i = 0; i < numTops; i++){

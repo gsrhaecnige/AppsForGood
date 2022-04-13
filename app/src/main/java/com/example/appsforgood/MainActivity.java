@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
         //displayForecast();
         //displayClothing();
+
     }
 
     public void performForecast(View view) {

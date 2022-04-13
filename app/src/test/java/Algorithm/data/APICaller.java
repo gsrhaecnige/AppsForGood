@@ -38,4 +38,13 @@ public class APICaller{
 
         return in.readLine();
     }
+
+    public void setLat(double latitude){
+        lat = latitude;
+    }
+
+    public void setLon(double longitude){
+        lat = longitude;
+    }
+
 }

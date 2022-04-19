@@ -1,16 +1,14 @@
 package Algorithm.clothing;
 
-public class Top extends Clothing {
-
+public class Top extends Clothing{
     private static final int numTops = 14; //need to change this value if we want to add/change the temp ranges that the shirts are applicable to
-    private static int[][] tempRating = new int[2][10];
-    private static int[][] tops = new int[2][numTops];
+    private static final int[][] tops = new int[2][numTops];
 
-    public static void main(String[] args) {
+    /*
+    public static void main(String[] args) throws IOException {
         populateTempRating();
         populateTopList();
 
-        /*
         int test = 101;
         System.out.println("temp rating array: "+ Arrays.deepToString(tempRating));
         System.out.println("tops array: "+ Arrays.deepToString(tops));
@@ -19,12 +17,24 @@ public class Top extends Clothing {
         System.out.println();
 
         System.out.println("testing top method: " + top(test));
-         */
+    }
+    */
 
+    /**
+     * default constructor for the Top class.
+     */
+    public Top(){
+        super();
+        populateTopList();
     }
 
-    public static String getTop(double feelsLike){
-        int rating = whatTempRange(feelsLike);
+    /**
+     * this method will decide which Top item best fits the temperature given.
+     * @param feelsLike a double of the feelsLike temperature
+     * @return a String of the name of the Top item
+     */
+    public String getTop(double feelsLike){
+        int rating = super.whatTempRange(feelsLike);
 
         for (int i = 0; i < numTops; i++){
             if (rating == tops[1][i])
@@ -34,17 +44,11 @@ public class Top extends Clothing {
         return null;
     }
 
-
-
-    private static void populateTempRating(){
-        for (int i = 0; i < 10; i++){
-            tempRating[0][i] = -30 + 15*i;
-            tempRating[1][i] = i + 1;
-        }
-    }
-
-    //each top is represented by a number that sorta corresponds to the relative sleeve length
-    //tank 1, t-shirt 2, long sleeve 3, sweater 4
+    /**
+     * a helper method to fill in the array that stores the top items and their respective temperature ratings.
+     * each top is represented by a number that sorta corresponds to the relative sleeve length
+     * tank 1, t-shirt 2, long sleeve 3, sweater 4
+     */
     private static void populateTopList(){
         //populating the tank tops. current temp range is 8-9.
         for (int i = 0; i < 2; i++){
@@ -74,33 +78,12 @@ public class Top extends Clothing {
 
     }
 
-    private static int whatTempRange(double temp){
-        int temperature = (int)temp;
 
-        for (int i = 0; i < 10; i++){
-            if (i == 0){
-                if (temperature < tempRating[0][0])
-                    return tempRating[1][0];
-            }
-
-            if (i == 9){
-                if (temperature > tempRating[0][i])
-                    return tempRating[1][i];
-            }
-
-            if (temperature == tempRating[0][i])
-                return tempRating[1][i];
-
-            else {
-                if (temperature < tempRating[0][i] && temperature > tempRating[0][i-1])
-                    return tempRating[1][i];
-            }
-        }
-
-        return 0;
-
-    }
-
+    /**
+     * a helper method to "translate" the numeric version of a Top item to a String
+     * @param key an int between 1 and 4 (inclusive)
+     * @return a string representation of the Top item. returns null if an invalid input is given.
+     */
     private static String shirtType(int key){
         if (key == 1)
             return "tank top";

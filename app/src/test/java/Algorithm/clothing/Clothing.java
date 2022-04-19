@@ -2,54 +2,55 @@ package Algorithm.clothing;
 
 public class Clothing {
 
-    public String name;
-    public String piecetype;
-    public int mintemp;
-    public int maxtemp;
+    private static final int[][] tempRating = new int[2][10];
 
-
-
-    //Base constructor
+    /**
+     * default constructor for the Clothing class
+     */
     public Clothing(){
-        name = "";
-        piecetype = "";
-        mintemp = 0;
-        maxtemp = 0;
+        populateTempRating();
     }
 
-    //Returns the String name
-    public String getName(){
-        return name;
+    /**
+     * this helper method populates the tempRating array with preset values
+     */
+    private static void populateTempRating(){
+        for (int i = 0; i < 10; i++){
+            tempRating[0][i] = -30 + 15*i;
+            tempRating[1][i] = i + 1;
+        }
     }
 
-    //Returns the int Mintemp
-    public int getMintemp(){
-        return mintemp;
-    }
+    /**
+     * this method tells you what range number corresponds to the given temperature
+     * @param temp a double of the temperature
+     * @return an int between 1 and 11 (inclusive)
+     */
+    public int whatTempRange(double temp){
+        int temperature = (int)temp;
 
-    //Returns the int Maxtemp
-    public int getMaxtemp(){
-        return maxtemp;
-    }
+        for (int i = 0; i < 10; i++){
+            if (i == 0){
+                if (temperature < tempRating[0][0])
+                    return tempRating[1][0];
+            }
 
-    //Set clothing name
-    public void setName(String n) {
-        name = n;
-    }
+            if (i == 9){
+                if (temperature > tempRating[0][i])
+                    return tempRating[1][i];
+            }
 
-    //Set outfit piece type
-    public void setPiecetype(String n) {
-        piecetype = n;
-    }
+            if (temperature == tempRating[0][i])
+                return tempRating[1][i];
 
-    //Set clothing minimum temperature
-    public void setMintemp(int n) {
-        mintemp = n;
-    }
+            else {
+                if (temperature < tempRating[0][i] && temperature > tempRating[0][i-1])
+                    return tempRating[1][i];
+            }
+        }
 
-    //Set clothing maximum temperature
-    public void setMaxtemp(int n) {
-        maxtemp = n;
+        return 0;
+
     }
 
 }

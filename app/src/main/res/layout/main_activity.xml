@@ -23,10 +23,10 @@
         android:text="@string/forecast"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weatherBoxText" />
+        app:layout_constraintTop_toBottomOf="@+id/currentLocationText" />
 
     <TextView
-        android:id="@+id/weatherBoxText"
+        android:id="@+id/currentLocationText"
         android:layout_width="411dp"
         android:layout_height="75dp"
         android:layout_marginTop="20dp"

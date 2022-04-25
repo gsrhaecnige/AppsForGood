@@ -6,22 +6,13 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
-import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.provider.Settings;
-import android.text.Html;
 import android.view.View;
-import android.widget.SearchView;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -30,10 +21,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-
-import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -44,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView currentLocationText, dateText;
     View weatherButton;
+    double lat, lon;
     private FusedLocationProviderClient fusedLocationProviderClient;
 
 
@@ -57,11 +45,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        dateText = (TextView) findViewById(R.id.dateText);
+        dateText = findViewById(R.id.dateText);
         dateText.setText(getDate());
 
         weatherButton = findViewById(R.id.weatherButton);
-        currentLocationText = (TextView) findViewById(R.id.currentLocationText);
+        currentLocationText = findViewById(R.id.currentLocationText);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -84,6 +72,9 @@ public class MainActivity extends AppCompatActivity {
         });*/
     }
 
+    /**
+     * Gets the current user location (latitude, longitude)
+     */
     @SuppressLint("MissingPermission")
     private void getLocation() {
         fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
@@ -95,10 +86,14 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),
                                 location.getLongitude(), 1);
-                        currentLocationText.setText((Html.fromHtml("<font color='#6200EE'><b>Longitude: </b><br></font>" +
-                                addresses.get(0).getLatitude() +
-                                "<br><font color='#6200EE'><b>Latitude: </b><br></font>"
-                                + addresses.get(0).getLongitude())));
+                        lat = addresses.get(0).getLatitude();
+                        lon = addresses.get(0).getLongitude();
+
+                        /*currentLocationText.setText((Html.fromHtml("<font color='#6200EE'><b>Longitude: </b><br></font>"
+                                + lat
+                                + "<br><font color='#6200EE'><b>Latitude: </b><br></font>"
+                                + long)));
+                         */
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

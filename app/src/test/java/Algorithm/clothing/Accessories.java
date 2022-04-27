@@ -3,7 +3,7 @@ package Algorithm.clothing;
 public class Accessories extends Clothing{
 
     private final int numTempAcc = 6;
-    private final int numPrecipAcc = 4;
+    private final int numPrecipAcc = 2;
     private final int numSunAcc = 4;
 
     private final int[][] tempAcc = new int[3][numTempAcc]; //stores the accessories that are dependant on temperature. the two bottom rows are the temperature range
@@ -31,7 +31,6 @@ public class Accessories extends Clothing{
     public String getAcc(double temp, boolean isRaining, boolean isSnowing, int uvIndex){ //still need to do something for the sunlight accessories
         String output = "";
         int range = super.whatTempRange(temp);
-        //System.out.println("the range is: " + range);
 
         if (isRaining){ //finds the elements in the precip array that are for rain
             for (int i = 0; i < numPrecipAcc; i++){
@@ -56,7 +55,7 @@ public class Accessories extends Clothing{
 
         if (uvIndex >= 8){
             for (int i = 0; i < numSunAcc; i++){
-                if (i == 2)
+                if (i == 3)
                     output += accType(sunAcc[0][i]) + ", ";
 
                 else
@@ -105,14 +104,9 @@ public class Accessories extends Clothing{
             precipiAcc[0][i] = numTempAcc + 1 + i;
         }
 
-        for (int i = 0; i < 3; i++){ //rain accessories
+        for (int i = 0; i < numPrecipAcc; i++){ //rain accessories
             precipiAcc[1][i] = 500;
         }
-
-        for (int i = 3; i < numPrecipAcc; i++){ //snow accessories
-            precipiAcc[1][i] = 600;
-        }
-
 
         //sunAcc
         for (int i = 0; i < numSunAcc; i++){ //populating first row
@@ -150,27 +144,20 @@ public class Accessories extends Clothing{
             return "Rain jacket";
 
         if (key == 8)
-            return "Rain boots with socks";
-
-        if (key == 9)
             return "Umbrella";
 
-        if (key == 10)
-            return "Snow Boots and Socks";
-
         //sunlight accessories
-        if (key == 11)
+        if (key == 9)
             return "Sunglasses";
 
-        if (key == 12)
+        if (key == 10)
             return "Sunhat";
 
-        if (key == 13)
+        if (key == 11)
             return "Sunscreen";
 
-        if (key == 14)
+        if (key == 12)
             return "Parasol";
-
 
         else
             return null;

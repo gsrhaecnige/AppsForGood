@@ -58,7 +58,7 @@ public class Shoes extends Clothing{
         shoeRec[1][3] = 3;
         shoeRec[2][3] = 7;
 
-        //an easter egg. tap shoes/rollar skates
+        //warm boots for cold weather
         shoeRec[1][4] = 0;
         shoeRec[2][4] = 2;
 
@@ -83,7 +83,7 @@ public class Shoes extends Clothing{
             return "Sneakers or casual shoes";
 
         if (key == 5)
-            return "Tap shoes or rollar skates";
+            return "Warm boots";
 
         else
             return null;

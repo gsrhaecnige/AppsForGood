@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <EditText
+        android:id="@+id/dateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        android:text="Today's Date"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/weatherButton"
+        android:layout_width="400dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="120dp"
+        android:onClick="performForecast"
+        android:text="Forecast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/weatherBoxText" />
+
+    <TextView
+        android:id="@+id/weatherBoxText"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="More Forecast"
+        app:layout_constraintTop_toBottomOf="@+id/locationSearch"
+        tools:layout_editor_absoluteX="-5dp" />
+
+    <Button
+        android:id="@+id/clothingButton"
+        android:layout_width="382dp"
+        android:layout_height="256dp"
+        android:layout_marginTop="24dp"
+        android:onClick="performClothing"
+        android:text="Clothing"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weatherButton" />
+
+    <TextView
+        android:id="@+id/topsText"
+        android:layout_width="180dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="24dp"
+        android:text="Tops"
+        app:layout_constraintEnd_toStartOf="@+id/bottomsText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weatherButton" />
+
+    <TextView
+        android:id="@+id/bottomsText"
+        android:layout_width="180dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:text="Bottoms"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weatherButton" />
+
+    <TextView
+        android:id="@+id/shoesText"
+        android:layout_width="180dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:text="Shoes"
+        app:layout_constraintEnd_toStartOf="@+id/acessoriesText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topsText" />
+
+    <TextView
+        android:id="@+id/acessoriesText"
+        android:layout_width="180dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Accessories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomsText" />
+
+    <SearchView
+        android:id="@+id/locationSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/dateText"
+        tools:layout_editor_absoluteX="0dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

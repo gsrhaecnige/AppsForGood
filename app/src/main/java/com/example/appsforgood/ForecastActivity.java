@@ -18,19 +18,4 @@ public class ForecastActivity extends MainActivity {
         setContentView(R.layout.activity_forecast);
     }
 
-    /**
-     * Transitions to Clothing view
-     * @param view the current View
-     */
-    public void performClothing(View view) {
-        super.performClothing(view);
-    }
-
-    /**
-     * Transitions to Main view
-     * @param view the current View
-     */
-    public void performMain(View view) {
-        super.performMain(view);
-    }
 }

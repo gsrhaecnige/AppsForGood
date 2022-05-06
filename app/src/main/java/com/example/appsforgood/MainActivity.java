@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
     TextView currentLocationText, dateText;
     View weatherButton;
-    double lat, lon;
+    private double lat, lon;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private static final String TAG = "MainActivity";
     private static final int ERROR_DIALOG_REQUEST = 9001;
@@ -187,6 +187,16 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * Transitions to Map activity
+     * @param view the current View
+     */
+    /*
+    public void performMap(View view) {
+        Intent intent = new Intent(this, MapActivity.class);
+        startActivity(intent);
+    }
+    */
     /**
      * Transitions to Main activity
      * @param view the current View

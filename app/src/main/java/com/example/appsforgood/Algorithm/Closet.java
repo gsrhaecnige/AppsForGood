@@ -12,17 +12,6 @@ public class Closet {
     private ArrayList<Accessories> vanity;
     private ArrayList<Double> ratings;
 
-    //Weather variable for rating
-    private Weather weather;
-
-
-    public Closet() throws IOException {
-        weather = new Weather();
-    };
-
-    public Closet(Weather w){
-        weather = w;
-    };
 
 
 

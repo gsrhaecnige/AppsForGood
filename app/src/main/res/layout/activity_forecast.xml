@@ -11,7 +11,7 @@
         android:id="@+id/basicForecastText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Basic"
+        android:text="@string/weather_summary"
         app:layout_constraintBottom_toTopOf="@id/hourlyForecastText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="176dp"
-        android:text="Hourly"
+        android:text="@string/hourly"
         app:layout_constraintBottom_toTopOf="@+id/dailyForecastText"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -32,7 +32,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="175dp"
-        android:text="Daily"
+        android:text="@string/daily"
         app:layout_constraintBottom_toTopOf="@+id/clothingRedirectButton"
         tools:layout_editor_absoluteX="0dp" />
 
@@ -46,4 +46,16 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/forecastBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="performMain"
+        android:text="@string/back"
+        app:layout_constraintBottom_toTopOf="@+id/basicForecastText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

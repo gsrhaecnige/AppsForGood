@@ -1,4 +1,4 @@
-package Algorithm.clothing;
+package com.example.appsforgood.Algorithm.clothing;
 
 public class Bottom extends Clothing {
 

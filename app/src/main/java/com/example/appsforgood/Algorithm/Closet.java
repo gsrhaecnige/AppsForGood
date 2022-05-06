@@ -1,7 +1,7 @@
-package Algorithm;
+package com.example.appsforgood.Algorithm;
 
-import Algorithm.clothing.Accessories;
-import Algorithm.clothing.Clothing;
+import com.example.appsforgood.Algorithm.clothing.Accessories;
+import com.example.appsforgood.Algorithm.clothing.Clothing;
 
 import java.io.IOException;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package Algorithm.clothing;
+package com.example.appsforgood.Algorithm.clothing;
 
 public class Top extends Clothing{
     private static final int numTops = 14; //need to change this value if we want to add/change the temp ranges that the shirts are applicable to

@@ -40,6 +40,40 @@ import java.util.List;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback{
 
+    private static final String TAG = "MapActivity";
+    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
+    private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
+    private static final int ERROR_DIALOG_REQUEST = 9001;
+
+    private EditText mSearchText;
+    private Boolean mLocationPermissionsGranted = false;
+    private GoogleMap mMap;
+    private static final float DEFAULT_ZOOM = 15f;
+    private FusedLocationProviderClient mFusedLocationProviderClient;
+
+    /**
+     * Loads the Map activity, gets location permissions, creates location search bar
+     * @param savedInstanceState the saved state of the given activity
+     */
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_map);
+        mSearchText = (EditText) findViewById(R.id.inputSearch);
+
+        getLocationPermission();
+
+        if (isServicesOK()) {
+            init();
+        }
+    }
+
+    /**
+     * Retrieves Google Map from Maps API
+     * Enables setMyLocation on map
+     * @param googleMap the Google Map retrieved from Maps API
+     */
     @SuppressLint("MissingPermission")
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -58,34 +92,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             mMap.setMyLocationEnabled(true);
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
 
-            init();
+            //init();
         }
     }
 
-    private static final String TAG = "MapActivity";
-    private static final String FINE_LOCATION = Manifest.permission.ACCESS_FINE_LOCATION;
-    private static final String COARSE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
-
-    private EditText mSearchText;
-    private Boolean mLocationPermissionsGranted = false;
-    private GoogleMap mMap;
-    private static final float DEFAULT_ZOOM = 15f;
-    private FusedLocationProviderClient mFusedLocationProviderClient;
-
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
-        mSearchText = (EditText) findViewById(R.id.inputSearch);
-
-        getLocationPermission();
-
-        if (isServicesOK()) {
-            init();
-        }
-    }
-
+    /**
+     * Sets OnEditorActionListener to corresponding edits in searchView
+     */
     private void init(){
         Log.d(TAG, "init: initializing");
 
@@ -105,6 +118,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         });
     }
 
+    /**
+     * Checks if Google Play Services are enabled and of the correct version
+     * @return
+     */
     public boolean isServicesOK(){
         Log.d(TAG, "isServicesOK: checking google services version");
 
@@ -115,24 +132,31 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             Log.d(TAG, "isServicesOK: Google Play Services is working");
             return true;
         }
-        /*
         else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
-            //an error occured but we can resolve it
-            Log.d(TAG, "isServicesOK: an error occured but we can fix it");
+            //an error occurred but we can resolve it
+            Log.d(TAG, "isServicesOK: an error occurred but we can fix it");
             Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MapActivity.this, available, ERROR_DIALOG_REQUEST);
             dialog.show();
-        }*/
+        }
         else{
             Toast.makeText(this, "You can't make map requests", Toast.LENGTH_SHORT).show();
         }
         return false;
     }
 
+    /**
+     * Moves and refocuses camera on indicated area of map
+     * @param latLng the location (latitude, longitude)
+     * @param zoom the default map resolution
+     */
     private void moveCamera(LatLng latLng, float zoom){
         Log.d(TAG, "moveCamera: moving the camera to: lat: " + latLng.latitude + ", lng: " + latLng.longitude );
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
     }
 
+    /**
+     * Initializes the Google Maps fragment within the Map activity
+     */
     private void initMap(){
         Log.d(TAG, "initMap: initializing map");
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
@@ -140,7 +164,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(MapActivity.this);
     }
 
-
+    /**
+     * Geolocates the user-defined location
+     */
     private void geoLocate(){
         Log.d(TAG, "geoLocate: geolocating");
 
@@ -163,6 +189,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
     }
 
+    /**
+     * Gets current location, moves camera to location on map
+     */
     private void getDeviceLocation(){
         Log.d(TAG, "getDeviceLocation: getting the devices current location");
 
@@ -194,6 +223,10 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
     }
 
+    /**
+     * Checks access location permissions on user device
+     * Requests permissions if not enabled
+     */
     private void getLocationPermission(){
         Log.d(TAG, "getLocationPermission: getting location permissions");
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
@@ -216,6 +249,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
     }
 
+    /**
+     * Asks user to allow location services
+     * Initializes map if location permissions are granted
+     * @param requestCode the constant location permission request code
+     * @param permissions the access device location permissions
+     * @param grantResults whether permissions have been granted
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);

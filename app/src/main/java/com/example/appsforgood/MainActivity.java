@@ -35,17 +35,17 @@ import com.google.android.gms.common.GoogleApiAvailability;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView currentLocationText, dateText;
-    View weatherButton;
+    private TextView currentLocationText, dateText;
+    private View weatherButton;
     private double lat, lon;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private static final String TAG = "MainActivity";
     private static final int ERROR_DIALOG_REQUEST = 9001;
 
     /**
-     * Loads the Main view, gets date, gets location, displays forecast information,
+     * Loads the Main activity, gets date, gets location, displays forecast information,
      * displays basic clothing recommendations
-     * @param savedInstanceState the saved state of the given view
+     * @param savedInstanceState the saved state of the given activity
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Gets the current user location (latitude, longitude)
+     * Sets lat and lon values
      */
     @SuppressLint("MissingPermission")
     private void getLocation() {
@@ -113,6 +114,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Initializes the main activity screen
+     */
     private void init(){
         SearchView locationSearch = (SearchView) findViewById(R.id.locationSearch);
         locationSearch.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +128,10 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Checks if Google Play Services are enabled on user device
+     * @return true if Google Play Services are or can be enabled
+     */
     public boolean isServicesOK(){
         Log.d(TAG, "isServicesOK: checking google services version");
 
@@ -145,12 +153,13 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+    /**
+     * Initializes the user interface
+     * Makes the activity visible to the user
+     */
     @Override
     protected void onStart() {
         super.onStart();
-        //displayForecast();
-        //displayClothing();
-
     }
 
     /**

@@ -24,12 +24,22 @@ public class ClothingActivity extends AppCompatActivity {
     public ClothingActivity() throws MalformedURLException {
     }
 
+    /**
+     * Loads the Clothing view
+     * @param savedInstanceState the saved state of the given view
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clothing);
+    }
 
-        onStart();
+    public void performForecast(View view) {
+        super.performForecast(view);
+    }
+
+    public void performMain(View view) {
+        super.performMain(view);
     }
 
     @Override

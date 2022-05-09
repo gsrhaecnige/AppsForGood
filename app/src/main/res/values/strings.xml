@@ -13,4 +13,6 @@
     <string name="shoes">Shoes</string>
     <string name="accessories">Accessories</string>
     <string name="back">Back to Home</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="google_maps_api_key">AIzaSyCWo7lAaMwmk8aGzVG-Ex6r6SNa7XKAjfE</string>
 </resources>

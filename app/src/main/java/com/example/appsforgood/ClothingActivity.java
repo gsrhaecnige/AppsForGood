@@ -8,21 +8,30 @@ import android.view.View;
 import com.example.appsforgood.Algorithm.clothing.*;
 import com.example.appsforgood.data.*;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 
-public class ClothingActivity extends AppCompatActivity {
+public class ClothingActivity extends MainActivity {
 
     Top t = new Top();
     Bottom b = new Bottom();
     Shoes s = new Shoes();
     Accessories a = new Accessories();
 
-    APICaller api = new APICaller(42.2626,71.8023);
-    JSONWeatherParser jsonParser = new JSONWeatherParser(api);
+    double feelsLike = 0;
 
-    public ClothingActivity() throws MalformedURLException {
+    APICaller api;
+    {
+        try {
+            api = new APICaller(getLatInit(),getLonInit());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
     }
+
+    JSONWeatherParser jsonParser = new JSONWeatherParser(api);
 
     /**
      * Loads the Clothing view
@@ -42,10 +51,28 @@ public class ClothingActivity extends AppCompatActivity {
         super.performMain(view);
     }
 
+    private void getAvgFeelsLike(){
+        ArrayList<Double> feelsLikeList = jsonParser.getHourFeels();
+
+        for (Double temp: feelsLikeList){
+            feelsLike += temp;
+        }
+
+        feelsLike /= feelsLikeList.size();
+    }
+
     @Override
     protected void onStart(){
         super.onStart();
         //draw visual elements and do animations in here?
+
+        try { //this is the .convertJSON method in try/catch
+            jsonParser.convertJSON();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        getAvgFeelsLike();
 
         onResume();
     }

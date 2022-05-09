@@ -1,4 +1,4 @@
-package Algorithm.data;
+package com.example.appsforgood.data;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "icon"
 })
 @Generated("jsonschema2pojo")
-public class Weather__1 {
+public class Weather {
 
     @JsonProperty("id")
     private Integer id;
@@ -84,7 +84,7 @@ public class Weather__1 {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Weather__1 .class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Weather.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("id");
         sb.append('=');
         sb.append(((this.id == null)?"<null>":this.id));

@@ -1,4 +1,4 @@
-package Algorithm.data;
+package com.example.appsforgood.data;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,50 +14,42 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "dt",
-    "sunrise",
-    "sunset",
-    "moonrise",
-    "moonset",
-    "moon_phase",
     "temp",
     "feels_like",
     "pressure",
     "humidity",
     "dew_point",
+    "uvi",
+    "clouds",
+    "visibility",
     "wind_speed",
     "wind_deg",
     "wind_gust",
     "weather",
-    "clouds",
     "pop",
-    "uvi",
     "rain"
 })
 @Generated("jsonschema2pojo")
-public class Daily {
+public class Hourly {
 
     @JsonProperty("dt")
     private Integer dt;
-    @JsonProperty("sunrise")
-    private Integer sunrise;
-    @JsonProperty("sunset")
-    private Integer sunset;
-    @JsonProperty("moonrise")
-    private Integer moonrise;
-    @JsonProperty("moonset")
-    private Integer moonset;
-    @JsonProperty("moon_phase")
-    private Double moonPhase;
     @JsonProperty("temp")
-    private Temp temp;
+    private Double temp;
     @JsonProperty("feels_like")
-    private FeelsLike feelsLike;
+    private Double feelsLike;
     @JsonProperty("pressure")
     private Integer pressure;
     @JsonProperty("humidity")
     private Integer humidity;
     @JsonProperty("dew_point")
     private Double dewPoint;
+    @JsonProperty("uvi")
+    private Integer uvi;
+    @JsonProperty("clouds")
+    private Integer clouds;
+    @JsonProperty("visibility")
+    private Integer visibility;
     @JsonProperty("wind_speed")
     private Double windSpeed;
     @JsonProperty("wind_deg")
@@ -65,15 +57,11 @@ public class Daily {
     @JsonProperty("wind_gust")
     private Double windGust;
     @JsonProperty("weather")
-    private List<Weather__2> weather = null;
-    @JsonProperty("clouds")
-    private Integer clouds;
+    private List<Weather__1> weather = null;
     @JsonProperty("pop")
-    private Integer pop;
-    @JsonProperty("uvi")
-    private Integer uvi;
+    private Double pop;
     @JsonProperty("rain")
-    private Double rain;
+    private Rain rain;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -87,73 +75,23 @@ public class Daily {
         this.dt = dt;
     }
 
-    @JsonProperty("sunrise")
-    public Integer getSunrise() {
-        return sunrise;
-    }
-
-    @JsonProperty("sunrise")
-    public void setSunrise(Integer sunrise) {
-        this.sunrise = sunrise;
-    }
-
-    @JsonProperty("sunset")
-    public Integer getSunset() {
-        return sunset;
-    }
-
-    @JsonProperty("sunset")
-    public void setSunset(Integer sunset) {
-        this.sunset = sunset;
-    }
-
-    @JsonProperty("moonrise")
-    public Integer getMoonrise() {
-        return moonrise;
-    }
-
-    @JsonProperty("moonrise")
-    public void setMoonrise(Integer moonrise) {
-        this.moonrise = moonrise;
-    }
-
-    @JsonProperty("moonset")
-    public Integer getMoonset() {
-        return moonset;
-    }
-
-    @JsonProperty("moonset")
-    public void setMoonset(Integer moonset) {
-        this.moonset = moonset;
-    }
-
-    @JsonProperty("moon_phase")
-    public Double getMoonPhase() {
-        return moonPhase;
-    }
-
-    @JsonProperty("moon_phase")
-    public void setMoonPhase(Double moonPhase) {
-        this.moonPhase = moonPhase;
-    }
-
     @JsonProperty("temp")
-    public Temp getTemp() {
+    public Double getTemp() {
         return temp;
     }
 
     @JsonProperty("temp")
-    public void setTemp(Temp temp) {
+    public void setTemp(Double temp) {
         this.temp = temp;
     }
 
     @JsonProperty("feels_like")
-    public FeelsLike getFeelsLike() {
+    public Double getFeelsLike() {
         return feelsLike;
     }
 
     @JsonProperty("feels_like")
-    public void setFeelsLike(FeelsLike feelsLike) {
+    public void setFeelsLike(Double feelsLike) {
         this.feelsLike = feelsLike;
     }
 
@@ -187,6 +125,36 @@ public class Daily {
         this.dewPoint = dewPoint;
     }
 
+    @JsonProperty("uvi")
+    public Integer getUvi() {
+        return uvi;
+    }
+
+    @JsonProperty("uvi")
+    public void setUvi(Integer uvi) {
+        this.uvi = uvi;
+    }
+
+    @JsonProperty("clouds")
+    public Integer getClouds() {
+        return clouds;
+    }
+
+    @JsonProperty("clouds")
+    public void setClouds(Integer clouds) {
+        this.clouds = clouds;
+    }
+
+    @JsonProperty("visibility")
+    public Integer getVisibility() {
+        return visibility;
+    }
+
+    @JsonProperty("visibility")
+    public void setVisibility(Integer visibility) {
+        this.visibility = visibility;
+    }
+
     @JsonProperty("wind_speed")
     public Double getWindSpeed() {
         return windSpeed;
@@ -218,52 +186,32 @@ public class Daily {
     }
 
     @JsonProperty("weather")
-    public List<Weather__2> getWeather() {
+    public List<Weather__1> getWeather() {
         return weather;
     }
 
     @JsonProperty("weather")
-    public void setWeather(List<Weather__2> weather) {
+    public void setWeather(List<Weather__1> weather) {
         this.weather = weather;
     }
 
-    @JsonProperty("clouds")
-    public Integer getClouds() {
-        return clouds;
-    }
-
-    @JsonProperty("clouds")
-    public void setClouds(Integer clouds) {
-        this.clouds = clouds;
-    }
-
     @JsonProperty("pop")
-    public Integer getPop() {
+    public Double getPop() {
         return pop;
     }
 
     @JsonProperty("pop")
-    public void setPop(Integer pop) {
+    public void setPop(Double pop) {
         this.pop = pop;
     }
 
-    @JsonProperty("uvi")
-    public Integer getUvi() {
-        return uvi;
-    }
-
-    @JsonProperty("uvi")
-    public void setUvi(Integer uvi) {
-        this.uvi = uvi;
-    }
-
     @JsonProperty("rain")
-    public Double getRain() {
+    public Rain getRain() {
         return rain;
     }
 
     @JsonProperty("rain")
-    public void setRain(Double rain) {
+    public void setRain(Rain rain) {
         this.rain = rain;
     }
 
@@ -280,30 +228,10 @@ public class Daily {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Daily.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Hourly.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("dt");
         sb.append('=');
         sb.append(((this.dt == null)?"<null>":this.dt));
-        sb.append(',');
-        sb.append("sunrise");
-        sb.append('=');
-        sb.append(((this.sunrise == null)?"<null>":this.sunrise));
-        sb.append(',');
-        sb.append("sunset");
-        sb.append('=');
-        sb.append(((this.sunset == null)?"<null>":this.sunset));
-        sb.append(',');
-        sb.append("moonrise");
-        sb.append('=');
-        sb.append(((this.moonrise == null)?"<null>":this.moonrise));
-        sb.append(',');
-        sb.append("moonset");
-        sb.append('=');
-        sb.append(((this.moonset == null)?"<null>":this.moonset));
-        sb.append(',');
-        sb.append("moonPhase");
-        sb.append('=');
-        sb.append(((this.moonPhase == null)?"<null>":this.moonPhase));
         sb.append(',');
         sb.append("temp");
         sb.append('=');
@@ -325,6 +253,18 @@ public class Daily {
         sb.append('=');
         sb.append(((this.dewPoint == null)?"<null>":this.dewPoint));
         sb.append(',');
+        sb.append("uvi");
+        sb.append('=');
+        sb.append(((this.uvi == null)?"<null>":this.uvi));
+        sb.append(',');
+        sb.append("clouds");
+        sb.append('=');
+        sb.append(((this.clouds == null)?"<null>":this.clouds));
+        sb.append(',');
+        sb.append("visibility");
+        sb.append('=');
+        sb.append(((this.visibility == null)?"<null>":this.visibility));
+        sb.append(',');
         sb.append("windSpeed");
         sb.append('=');
         sb.append(((this.windSpeed == null)?"<null>":this.windSpeed));
@@ -341,17 +281,9 @@ public class Daily {
         sb.append('=');
         sb.append(((this.weather == null)?"<null>":this.weather));
         sb.append(',');
-        sb.append("clouds");
-        sb.append('=');
-        sb.append(((this.clouds == null)?"<null>":this.clouds));
-        sb.append(',');
         sb.append("pop");
         sb.append('=');
         sb.append(((this.pop == null)?"<null>":this.pop));
-        sb.append(',');
-        sb.append("uvi");
-        sb.append('=');
-        sb.append(((this.uvi == null)?"<null>":this.uvi));
         sb.append(',');
         sb.append("rain");
         sb.append('=');

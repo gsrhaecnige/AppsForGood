@@ -1,4 +1,4 @@
-package Algorithm.data;
+package com.example.appsforgood.data;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

@@ -1,4 +1,4 @@
-package Algorithm.data;
+package com.example.appsforgood.data;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,63 +12,63 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "day",
-    "night",
-    "eve",
-    "morn"
+    "id",
+    "main",
+    "description",
+    "icon"
 })
 @Generated("jsonschema2pojo")
-public class FeelsLike {
+public class Weather__1 {
 
-    @JsonProperty("day")
-    private Double day;
-    @JsonProperty("night")
-    private Double night;
-    @JsonProperty("eve")
-    private Double eve;
-    @JsonProperty("morn")
-    private Double morn;
+    @JsonProperty("id")
+    private Integer id;
+    @JsonProperty("main")
+    private String main;
+    @JsonProperty("description")
+    private String description;
+    @JsonProperty("icon")
+    private String icon;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("day")
-    public Double getDay() {
-        return day;
+    @JsonProperty("id")
+    public Integer getId() {
+        return id;
     }
 
-    @JsonProperty("day")
-    public void setDay(Double day) {
-        this.day = day;
+    @JsonProperty("id")
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    @JsonProperty("night")
-    public Double getNight() {
-        return night;
+    @JsonProperty("main")
+    public String getMain() {
+        return main;
     }
 
-    @JsonProperty("night")
-    public void setNight(Double night) {
-        this.night = night;
+    @JsonProperty("main")
+    public void setMain(String main) {
+        this.main = main;
     }
 
-    @JsonProperty("eve")
-    public Double getEve() {
-        return eve;
+    @JsonProperty("description")
+    public String getDescription() {
+        return description;
     }
 
-    @JsonProperty("eve")
-    public void setEve(Double eve) {
-        this.eve = eve;
+    @JsonProperty("description")
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    @JsonProperty("morn")
-    public Double getMorn() {
-        return morn;
+    @JsonProperty("icon")
+    public String getIcon() {
+        return icon;
     }
 
-    @JsonProperty("morn")
-    public void setMorn(Double morn) {
-        this.morn = morn;
+    @JsonProperty("icon")
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 
     @JsonAnyGetter
@@ -84,22 +84,22 @@ public class FeelsLike {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(FeelsLike.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
-        sb.append("day");
+        sb.append(Weather__1 .class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append("id");
         sb.append('=');
-        sb.append(((this.day == null)?"<null>":this.day));
+        sb.append(((this.id == null)?"<null>":this.id));
         sb.append(',');
-        sb.append("night");
+        sb.append("main");
         sb.append('=');
-        sb.append(((this.night == null)?"<null>":this.night));
+        sb.append(((this.main == null)?"<null>":this.main));
         sb.append(',');
-        sb.append("eve");
+        sb.append("description");
         sb.append('=');
-        sb.append(((this.eve == null)?"<null>":this.eve));
+        sb.append(((this.description == null)?"<null>":this.description));
         sb.append(',');
-        sb.append("morn");
+        sb.append("icon");
         sb.append('=');
-        sb.append(((this.morn == null)?"<null>":this.morn));
+        sb.append(((this.icon == null)?"<null>":this.icon));
         sb.append(',');
         sb.append("additionalProperties");
         sb.append('=');

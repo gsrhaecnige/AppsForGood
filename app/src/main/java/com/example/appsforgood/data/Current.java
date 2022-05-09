@@ -1,4 +1,4 @@
-package Algorithm.data;
+package com.example.appsforgood.data;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +14,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "dt",
+    "sunrise",
+    "sunset",
     "temp",
     "feels_like",
     "pressure",
@@ -24,16 +26,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "visibility",
     "wind_speed",
     "wind_deg",
-    "wind_gust",
-    "weather",
-    "pop",
-    "rain"
+    "weather"
 })
 @Generated("jsonschema2pojo")
-public class Hourly {
+public class Current {
 
     @JsonProperty("dt")
     private Integer dt;
+    @JsonProperty("sunrise")
+    private Integer sunrise;
+    @JsonProperty("sunset")
+    private Integer sunset;
     @JsonProperty("temp")
     private Double temp;
     @JsonProperty("feels_like")
@@ -54,14 +57,8 @@ public class Hourly {
     private Double windSpeed;
     @JsonProperty("wind_deg")
     private Integer windDeg;
-    @JsonProperty("wind_gust")
-    private Double windGust;
     @JsonProperty("weather")
-    private List<Weather__1> weather = null;
-    @JsonProperty("pop")
-    private Double pop;
-    @JsonProperty("rain")
-    private Rain rain;
+    private List<Weather> weather = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
@@ -73,6 +70,26 @@ public class Hourly {
     @JsonProperty("dt")
     public void setDt(Integer dt) {
         this.dt = dt;
+    }
+
+    @JsonProperty("sunrise")
+    public Integer getSunrise() {
+        return sunrise;
+    }
+
+    @JsonProperty("sunrise")
+    public void setSunrise(Integer sunrise) {
+        this.sunrise = sunrise;
+    }
+
+    @JsonProperty("sunset")
+    public Integer getSunset() {
+        return sunset;
+    }
+
+    @JsonProperty("sunset")
+    public void setSunset(Integer sunset) {
+        this.sunset = sunset;
     }
 
     @JsonProperty("temp")
@@ -175,44 +192,14 @@ public class Hourly {
         this.windDeg = windDeg;
     }
 
-    @JsonProperty("wind_gust")
-    public Double getWindGust() {
-        return windGust;
-    }
-
-    @JsonProperty("wind_gust")
-    public void setWindGust(Double windGust) {
-        this.windGust = windGust;
-    }
-
     @JsonProperty("weather")
-    public List<Weather__1> getWeather() {
+    public List<Weather> getWeather() {
         return weather;
     }
 
     @JsonProperty("weather")
-    public void setWeather(List<Weather__1> weather) {
+    public void setWeather(List<Weather> weather) {
         this.weather = weather;
-    }
-
-    @JsonProperty("pop")
-    public Double getPop() {
-        return pop;
-    }
-
-    @JsonProperty("pop")
-    public void setPop(Double pop) {
-        this.pop = pop;
-    }
-
-    @JsonProperty("rain")
-    public Rain getRain() {
-        return rain;
-    }
-
-    @JsonProperty("rain")
-    public void setRain(Rain rain) {
-        this.rain = rain;
     }
 
     @JsonAnyGetter
@@ -228,10 +215,18 @@ public class Hourly {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Hourly.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(Current.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("dt");
         sb.append('=');
         sb.append(((this.dt == null)?"<null>":this.dt));
+        sb.append(',');
+        sb.append("sunrise");
+        sb.append('=');
+        sb.append(((this.sunrise == null)?"<null>":this.sunrise));
+        sb.append(',');
+        sb.append("sunset");
+        sb.append('=');
+        sb.append(((this.sunset == null)?"<null>":this.sunset));
         sb.append(',');
         sb.append("temp");
         sb.append('=');
@@ -273,21 +268,9 @@ public class Hourly {
         sb.append('=');
         sb.append(((this.windDeg == null)?"<null>":this.windDeg));
         sb.append(',');
-        sb.append("windGust");
-        sb.append('=');
-        sb.append(((this.windGust == null)?"<null>":this.windGust));
-        sb.append(',');
         sb.append("weather");
         sb.append('=');
         sb.append(((this.weather == null)?"<null>":this.weather));
-        sb.append(',');
-        sb.append("pop");
-        sb.append('=');
-        sb.append(((this.pop == null)?"<null>":this.pop));
-        sb.append(',');
-        sb.append("rain");
-        sb.append('=');
-        sb.append(((this.rain == null)?"<null>":this.rain));
         sb.append(',');
         sb.append("additionalProperties");
         sb.append('=');

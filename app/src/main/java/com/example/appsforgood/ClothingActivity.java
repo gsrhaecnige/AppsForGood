@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.appsforgood.Algorithm.clothing.*;
+import com.example.appsforgood.data.*;
+
+import java.net.MalformedURLException;
 
 
 public class ClothingActivity extends AppCompatActivity {
@@ -14,6 +17,12 @@ public class ClothingActivity extends AppCompatActivity {
     Bottom b = new Bottom();
     Shoes s = new Shoes();
     Accessories a = new Accessories();
+
+    APICaller api = new APICaller(42.2626,71.8023);
+    JSONWeatherParser jsonParser = new JSONWeatherParser(api);
+
+    public ClothingActivity() throws MalformedURLException {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -22,16 +22,7 @@ public class ClothingActivity extends MainActivity {
 
     double feelsLike = 0;
 
-    APICaller api;
-    {
-        try {
-            api = new APICaller(getLatInit(),getLonInit());
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    JSONWeatherParser jsonParser = new JSONWeatherParser(api);
+    //JSONWeatherParser jsonParser = new JSONWeatherParser(api);
 
     /**
      * Loads the Clothing view
@@ -51,6 +42,7 @@ public class ClothingActivity extends MainActivity {
         super.performMain(view);
     }
 
+    /*
     private void getAvgFeelsLike(){
         ArrayList<Double> feelsLikeList = jsonParser.getHourFeels();
 
@@ -61,11 +53,13 @@ public class ClothingActivity extends MainActivity {
         feelsLike /= feelsLikeList.size();
     }
 
+     */
+
     @Override
     protected void onStart(){
         super.onStart();
         //draw visual elements and do animations in here?
-
+/*
         try { //this is the .convertJSON method in try/catch
             jsonParser.convertJSON();
         } catch (IOException e) {
@@ -73,7 +67,7 @@ public class ClothingActivity extends MainActivity {
         }
 
         getAvgFeelsLike();
-
+*/
         onResume();
     }
 

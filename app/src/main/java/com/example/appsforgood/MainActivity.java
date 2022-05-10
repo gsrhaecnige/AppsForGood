@@ -20,12 +20,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import com.example.appsforgood.data.APICaller;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,6 +43,16 @@ public class MainActivity extends AppCompatActivity {
     private FusedLocationProviderClient fusedLocationProviderClient;
     private static final String TAG = "MainActivity";
     private static final int ERROR_DIALOG_REQUEST = 9001;
+
+    APICaller api;
+
+    {
+        try {
+            api = new APICaller(getLatInit(),getLonInit());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Loads the Main activity, gets date, gets location, displays forecast information,

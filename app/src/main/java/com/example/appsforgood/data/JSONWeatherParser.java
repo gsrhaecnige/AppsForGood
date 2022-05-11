@@ -72,26 +72,51 @@ public class JSONWeatherParser {
 
 	}
 
+	/**
+	 * accessor method for all the hourly temperatures
+	 * @return an ArrayList with each of the temperatures for the next 48 hours starting with next closest hour
+	 */
 	public ArrayList<Double> getHourTemp(){
 		return hourTemp;
 	}
 
+	/**
+	 * accessor method for all the hourly "feels-like" temperatures
+	 * @return an ArrayList with each of the "feels-like" temperatures for the next 48 hours starting with next closest hour
+	 */
 	public ArrayList<Double> getHourFeels(){
 		return hourFeels;
 	}
 
+	/**
+	 * accessor method for all the hourly times
+	 * @return an ArrayList with each of the times (unix) for the next 48 hours starting with next closest hour
+	 */
 	public ArrayList<Integer> getHourTime(){
 		return hourTime;
 	}
 
+	/**
+	 * accessor method for all the hourly humidity
+	 * @return an ArrayList with each of the humidities for the next 48 hours starting with next closest hour
+	 */
 	public ArrayList<Integer> getHourHum(){
 		return hourHum;
 	}
 
+	/**
+	 * accessor method for all the hourly weather information arrays
+	 * @return an ArrayList with each of the weather information array for the next 48 hours starting with next closest hour
+	 */
 	public 	ArrayList<List<Weather__1>> getHourWeather(){
 		return hourWeather;
 	}
 
+	/**
+	 * accesor method to obtain the current time in unix
+	 * @return the current time in unix
+	 * @throws IOException
+	 */
 	public int currentDT() throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -104,6 +129,11 @@ public class JSONWeatherParser {
 		return current.getDt();
 	}
 
+	/**
+	 * accesor method to obtain the current temperature
+	 * @return the current temperature
+	 * @throws IOException
+	 */
 	public double currentTemp() throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -116,6 +146,11 @@ public class JSONWeatherParser {
 		return current.getTemp();
 	}
 
+	/**
+	 * accesor method to obtain the current "feels-like" temperature
+	 * @return the current "feels-like" temperature
+	 * @throws IOException
+	 */
 	public double currentFeels() throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -128,6 +163,11 @@ public class JSONWeatherParser {
 		return current.getFeelsLike();
 	}
 
+	/**
+	 * accesor method to obtain the current humidity
+	 * @return the current humidity
+	 * @throws IOException
+	 */
 	public int currentHum() throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -140,6 +180,11 @@ public class JSONWeatherParser {
 		return current.getHumidity();
 	}
 
+	/**
+	 * accesor method to obtain the current weather information array
+	 * @return the current weather information array
+	 * @throws IOException
+	 */
 	public List<Weather> currentWeather() throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();

@@ -1,4 +1,4 @@
-package Algorithm.data;
+package com.example.appsforgood.data;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,21 +13,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
     "day",
-    "min",
-    "max",
     "night",
     "eve",
     "morn"
 })
 @Generated("jsonschema2pojo")
-public class Temp {
+public class FeelsLike {
 
     @JsonProperty("day")
     private Double day;
-    @JsonProperty("min")
-    private Double min;
-    @JsonProperty("max")
-    private Double max;
     @JsonProperty("night")
     private Double night;
     @JsonProperty("eve")
@@ -45,26 +39,6 @@ public class Temp {
     @JsonProperty("day")
     public void setDay(Double day) {
         this.day = day;
-    }
-
-    @JsonProperty("min")
-    public Double getMin() {
-        return min;
-    }
-
-    @JsonProperty("min")
-    public void setMin(Double min) {
-        this.min = min;
-    }
-
-    @JsonProperty("max")
-    public Double getMax() {
-        return max;
-    }
-
-    @JsonProperty("max")
-    public void setMax(Double max) {
-        this.max = max;
     }
 
     @JsonProperty("night")
@@ -110,18 +84,10 @@ public class Temp {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(Temp.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
+        sb.append(FeelsLike.class.getName()).append('@').append(Integer.toHexString(System.identityHashCode(this))).append('[');
         sb.append("day");
         sb.append('=');
         sb.append(((this.day == null)?"<null>":this.day));
-        sb.append(',');
-        sb.append("min");
-        sb.append('=');
-        sb.append(((this.min == null)?"<null>":this.min));
-        sb.append(',');
-        sb.append("max");
-        sb.append('=');
-        sb.append(((this.max == null)?"<null>":this.max));
         sb.append(',');
         sb.append("night");
         sb.append('=');

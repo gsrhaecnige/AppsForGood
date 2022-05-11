@@ -33,22 +33,23 @@ public class JSONWeatherParser {
 					SampleWeather.class);
 			//System.out.println(weatherSample);
 
-			System.out.println("LAT: " + weatherSample.getLat());
-			System.out.println("LON: " + weatherSample.getLon());
-			System.out.println("TIMEZONE: " + weatherSample.getTimezone());
-			System.out.println("TIMEZONE_OFFSET: " + weatherSample.getTimezoneOffset());
+			//System.out.println("LAT: " + weatherSample.getLat());
+			//System.out.println("LON: " + weatherSample.getLon());
+			//System.out.println("TIMEZONE: " + weatherSample.getTimezone());
+			//System.out.println("TIMEZONE_OFFSET: " + weatherSample.getTimezoneOffset());
 
 			// Get "current" object
 			Current current = weatherSample.getCurrent();
-			System.out.println("DT: " + current.getDt());
-			System.out.println("SUNRISE: " + current.getSunrise());
+			//System.out.println("DT: " + current.getDt());
+			//System.out.println("SUNRISE: " + current.getSunrise());
 
 			// Get list of "weather" objects, you know this is a list because of the [ ... ]
 			ArrayList<Weather> weatherList = (ArrayList<Weather>) current.getWeather();
-			for (Weather weather : weatherList) {
+			/*for (Weather weather : weatherList) {
 				System.out.println("ID: " + weather.getId());
 				System.out.println("DESCRIPTION: " + weather.getDescription());
 			}
+			*/
 
 			// Get list of "hourly" objects, you know this is a list because of the [ ... ]
 			ArrayList<Hourly> hourlyList = (ArrayList<Hourly>) weatherSample.getHourly();

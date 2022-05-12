@@ -36,17 +36,25 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 
+import com.example.appsforgood.Algorithm.clothing.*;
+import com.example.appsforgood.data.*;
+
 public class MainActivity extends Activity {
 
     private TextView currentLocationText, dateText;
+    private TextView shoesText, topText, bottomsText, accText;
     private View weatherButton;
     private double lat, lon;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private static final String TAG = "MainActivity";
     private static final int ERROR_DIALOG_REQUEST = 9001;
 
-    APICaller api;
+    private String tops, bottoms, shoes, acc;
+    private boolean isRaining, isSnowing;
+    private double temp;
+    private int uvIndex;
 
+    APICaller api;
     {
         try {
             api = new APICaller(getLatInit(),getLonInit());
@@ -54,6 +62,13 @@ public class MainActivity extends Activity {
             e.printStackTrace();
         }
     }
+
+    JSONWeatherParser jsonParser = new JSONWeatherParser(api);
+
+    Top t = new Top();
+    Bottom b = new Bottom();
+    Shoes s = new Shoes();
+    Accessories a = new Accessories();
 
     /**
      * Loads the Main activity, gets date, gets location, displays forecast information,
@@ -65,11 +80,16 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-        dateText = findViewById(R.id.dateText);
-        dateText.setText(getDate());
+        //dateText = findViewById(R.id.dateText);
+        //dateText.setText(getDate());
+
+
+        //JUST TESTING HERE
+        shoesText = findViewById(R.id.shoesText);
+        shoesText.setText("TESTTT");
 
         weatherButton = findViewById(R.id.weatherButton);
-        currentLocationText = findViewById(R.id.currentLocationText);
+        //currentLocationText = findViewById(R.id.dateText);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
@@ -80,7 +100,7 @@ public class MainActivity extends Activity {
         }
 
         if(isServicesOK()){
-            init();
+            //init();
         }
         /*weatherButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +150,7 @@ public class MainActivity extends Activity {
     /**
      * Initializes the main activity screen
      */
-    private void init(){
+    /*private void init(){
         SearchView locationSearch = (SearchView) findViewById(R.id.locationSearch);
         locationSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +159,7 @@ public class MainActivity extends Activity {
                 startActivity(intent);
             }
         });
-    }
+    }*/
 
     /**
      * Checks if Google Play Services are enabled on user device
@@ -173,6 +193,46 @@ public class MainActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        shoesText = findViewById(R.id.shoesText);
+        topText = findViewById(R.id.topsText);
+        bottomsText = findViewById(R.id.bottomsText);
+        accText = findViewById(R.id.accessoriesText);
+
+        // runs all the json parsing in a separate thread from the main to prevent errors
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try { jsonParser.convertJSON(); }
+                catch (IOException e) { e.printStackTrace(); }
+
+
+                try { temp = jsonParser.currentFeels(); }
+                catch (IOException e) { e.printStackTrace(); }
+
+
+            }
+        });
+
+        thread.start();
+        try { thread.sleep(1000); } //to let the parsing thread finish it's parsing before progressing on main thread
+        catch (InterruptedException e) { e.printStackTrace(); }
+
+        //placeholder values
+        isRaining = true;
+        isSnowing = false;
+        uvIndex = 2;
+
+
+        tops = t.getTop(temp);
+        bottoms = b.getBottoms(temp);
+        shoes = s.getShoe(temp, isRaining, isSnowing);
+        acc = a.getAcc(temp, isRaining,isSnowing,uvIndex);
+
+        topText.setText(tops);
+        bottomsText.setText(bottoms);
+        shoesText.setText(shoes);
+        accText.setText(acc);
     }
 
     /**

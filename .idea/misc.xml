@@ -3,14 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/zoebu/OneDrive - Worcester Polytechnic Institute (wpi.edu)/Comp Sci/Apps For Good/AppsForGood/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.207" />
-        <entry key="..\:/Users/zoebu/OneDrive - Worcester Polytechnic Institute (wpi.edu)/Comp Sci/Apps For Good/AppsForGood/app/src/main/res/drawable/ic_launcher_background.xml" value="0.207" />
-        <entry key="..\:/Users/zoebu/OneDrive - Worcester Polytechnic Institute (wpi.edu)/Comp Sci/Apps For Good/AppsForGood/app/src/main/res/layout/activity_clothing.xml" value="0.1" />
-        <entry key="..\:/Users/zoebu/OneDrive - Worcester Polytechnic Institute (wpi.edu)/Comp Sci/Apps For Good/AppsForGood/app/src/main/res/layout/activity_forecast.xml" value="0.1" />
-        <entry key="..\:/Users/zoebu/OneDrive - Worcester Polytechnic Institute (wpi.edu)/Comp Sci/Apps For Good/AppsForGood/app/src/main/res/layout/main_activity.xml" value="0.24479166666666666" />
-        <entry key="app/src/main/res/layout/activity_clothing.xml" value="0.39444681803385406" />
-        <entry key="app/src/main/res/layout/activity_forecast.xml" value="0.28229166666666666" />
+        <entry key="..\:/Users/Melinda/AndroidStudioProjects/AppsForGood/app/src/main/res/layout/activity_clothing.xml" value="0.17135416666666667" />
+        <entry key="..\:/Users/Melinda/AndroidStudioProjects/AppsForGood/app/src/main/res/layout/main_activity.xml" value="0.2" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.147" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.147" />
+        <entry key="app/src/main/res/layout/activity_clothing.xml" value="0.26132246376811596" />
+        <entry key="app/src/main/res/layout/activity_forecast.xml" value="0.26132246376811596" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.140625" />
+        <entry key="app/src/main/res/layout/activity_map.xml" value="0.17044525146484374" />
+        <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.1" />
         <entry key="app/src/main/res/layout/main_activity.xml" value="0.2657220137746711" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.1" />
         <entry key="app/src/main/res/layout/map_activity.xml" value="0.2608695652173913" />

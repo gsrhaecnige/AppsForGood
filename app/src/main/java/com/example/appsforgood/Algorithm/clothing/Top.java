@@ -4,22 +4,6 @@ public class Top extends Clothing{
     private static final int numTops = 14; //need to change this value if we want to add/change the temp ranges that the shirts are applicable to
     private static final int[][] tops = new int[2][numTops];
 
-    /*
-    public static void main(String[] args) throws IOException {
-        populateTempRating();
-        populateTopList();
-
-        int test = 101;
-        System.out.println("temp rating array: "+ Arrays.deepToString(tempRating));
-        System.out.println("tops array: "+ Arrays.deepToString(tops));
-        System.out.println("testing whattemprange method: "+ whatTempRange(test));
-
-        System.out.println();
-
-        System.out.println("testing top method: " + top(test));
-    }
-    */
-
     /**
      * default constructor for the Top class.
      */

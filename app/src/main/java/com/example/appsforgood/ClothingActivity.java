@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.appsforgood.Algorithm.clothing.*;
 import com.example.appsforgood.data.*;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 
 public class ClothingActivity extends MainActivity {
 
+    private TextView shoes;
     Top t = new Top();
     Bottom b = new Bottom();
     Shoes s = new Shoes();
@@ -22,7 +24,9 @@ public class ClothingActivity extends MainActivity {
 
     double feelsLike = 0;
 
-    //JSONWeatherParser jsonParser = new JSONWeatherParser(api);
+    private int test;
+
+    JSONWeatherParser jsonParser = new JSONWeatherParser(api);
 
     /**
      * Loads the Clothing view
@@ -56,18 +60,42 @@ public class ClothingActivity extends MainActivity {
      */
 
     @Override
-    protected void onStart(){
+    protected void onStart() {
         super.onStart();
         //draw visual elements and do animations in here?
-/*
-        try { //this is the .convertJSON method in try/catch
-            jsonParser.convertJSON();
-        } catch (IOException e) {
+        shoes = findViewById(R.id.shoesRecText);
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try { //this is the .convertJSON method in try/catch
+                    jsonParser.convertJSON();
+                } catch (
+                        IOException e) {
+                    e.printStackTrace();
+                }
+
+
+                try {
+                    test=(int)jsonParser.currentTemp();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            //getAvgFeelsLike();
+
+        }
+        );
+
+        thread.start();
+        try {
+            thread.sleep(10000);
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        getAvgFeelsLike();
-*/
+        shoes.setText(test + "");
         onResume();
     }
 

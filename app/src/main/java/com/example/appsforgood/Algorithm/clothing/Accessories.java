@@ -28,7 +28,7 @@ public class Accessories extends Clothing{
      * @param uvIndex int representation of the UV index
      * @return a string with the names of accessories to wear
      */
-    public String getAcc(double temp, boolean isRaining, boolean isSnowing, int uvIndex){ //still need to do something for the sunlight accessories
+    public String getAcc(double temp, boolean isRaining, boolean isSnowing, int uvIndex){
         String output = "";
         int range = super.whatTempRange(temp);
 

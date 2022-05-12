@@ -30,7 +30,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEY}" />
+            android:value="AIzaSyCWo7lAaMwmk8aGzVG-Ex6r6SNa7XKAjfE" />
 
         <activity
             android:name=".ClothingActivity"

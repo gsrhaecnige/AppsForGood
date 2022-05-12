@@ -207,7 +207,10 @@ public class MainActivity extends Activity {
                 catch (IOException e) { e.printStackTrace(); }
 
 
-                try { temp = jsonParser.currentFeels(); }
+                try { temp = jsonParser.currentTemp(); }
+                catch (IOException e) { e.printStackTrace(); }
+
+                try { uvIndex = (int) jsonParser.getUVI(); }
                 catch (IOException e) { e.printStackTrace(); }
             }
         });
@@ -219,13 +222,12 @@ public class MainActivity extends Activity {
         //placeholder values
         isRaining = true;
         isSnowing = false;
-        uvIndex = 2;
 
 
         tops = t.getTop(temp);
         bottoms = b.getBottoms(temp);
         shoes = s.getShoe(temp, isRaining, isSnowing);
-        acc = a.getAcc(temp, isRaining,isSnowing,uvIndex);
+        acc = a.getAcc(temp, isRaining, isSnowing, uvIndex);
 
         topText.setText(tops);
         bottomsText.setText(bottoms);

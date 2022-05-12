@@ -197,5 +197,17 @@ public class JSONWeatherParser {
 		return current.getWeather();
 	}
 
+	public double getUVI() throws IOException {
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		SampleWeather weatherSample = mapper.readValue(
+				caller.getData(),
+				SampleWeather.class);
+
+		Current current = weatherSample.getCurrent();
+		return current.getUvi();
+	}
+
 }
 

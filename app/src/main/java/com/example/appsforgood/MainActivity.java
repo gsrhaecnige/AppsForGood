@@ -209,8 +209,6 @@ public class MainActivity extends Activity {
 
                 try { temp = jsonParser.currentFeels(); }
                 catch (IOException e) { e.printStackTrace(); }
-
-
             }
         });
 

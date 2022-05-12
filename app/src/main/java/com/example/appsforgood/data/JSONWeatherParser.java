@@ -180,6 +180,42 @@ public class JSONWeatherParser {
 		return current.getHumidity();
 	}
 
+	public int currentUV() throws IOException {
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		SampleWeather weatherSample = mapper.readValue(
+				caller.getData(),
+				SampleWeather.class);
+
+		Current current = weatherSample.getCurrent();
+		return current.getUvi();
+	}
+
+	public double currentWindSp() throws IOException {
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		SampleWeather weatherSample = mapper.readValue(
+				caller.getData(),
+				SampleWeather.class);
+
+		Current current = weatherSample.getCurrent();
+		return current.getWindSpeed();
+	}
+
+	public int currentWindDeg() throws IOException {
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		SampleWeather weatherSample = mapper.readValue(
+				caller.getData(),
+				SampleWeather.class);
+
+		Current current = weatherSample.getCurrent();
+		return current.getWindDeg();
+	}
+
 	/**
 	 * accesor method to obtain the current weather information array
 	 * @return the current weather information array

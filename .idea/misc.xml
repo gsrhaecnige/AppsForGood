@@ -9,11 +9,12 @@
         <entry key="..\:/Users/zoebu/OneDrive - Worcester Polytechnic Institute (wpi.edu)/Comp Sci/Apps For Good/AppsForGood/app/src/main/res/layout/activity_forecast.xml" value="0.1" />
         <entry key="..\:/Users/zoebu/OneDrive - Worcester Polytechnic Institute (wpi.edu)/Comp Sci/Apps For Good/AppsForGood/app/src/main/res/layout/main_activity.xml" value="0.24479166666666666" />
         <entry key="app/src/main/res/layout/activity_clothing.xml" value="0.39444681803385406" />
-        <entry key="app/src/main/res/layout/activity_forecast.xml" value="0.20334320068359377" />
+        <entry key="app/src/main/res/layout/activity_forecast.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.140625" />
         <entry key="app/src/main/res/layout/activity_map.xml" value="0.14895833333333333" />
-        <entry key="app/src/main/res/layout/main_activity.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/main_activity.xml" value="0.125" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.1" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -39,14 +39,14 @@
                 android:layout_marginTop="88dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/constraintLayout4"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@drawable/app_icon_a" />
 
             <TextView
                 android:id="@+id/temperatureText"
                 android:layout_width="50dp"
                 android:layout_height="37dp"
                 android:layout_marginTop="88dp"
-                android:layout_marginEnd="44dp"
+                android:layout_marginEnd="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -55,7 +55,7 @@
                 android:layout_width="48dp"
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="44dp"
+                android:layout_marginEnd="40dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/temperatureText"
                 tools:ignore="MissingConstraints" />
@@ -65,7 +65,7 @@
                 android:layout_width="48dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="112dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="36dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -74,7 +74,7 @@
                 android:layout_width="43dp"
                 android:layout_height="26dp"
                 android:layout_marginStart="112dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/humidityText" />
 
@@ -87,7 +87,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/UVindexText"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.153" />
 
             <TextView
                 android:id="@+id/weatherdescText"
@@ -241,7 +241,7 @@
                 android:layout_height="91dp"
                 android:layout_marginTop="4dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.792"
+                app:layout_constraintHorizontal_bias="0.448"
                 app:layout_constraintStart_toEndOf="@+id/textView11"
                 app:layout_constraintTop_toBottomOf="@id/textView8" />
 

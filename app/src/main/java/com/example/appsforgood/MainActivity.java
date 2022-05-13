@@ -39,7 +39,7 @@ import com.google.android.gms.common.GoogleApiAvailability;
 import com.example.appsforgood.Algorithm.clothing.*;
 import com.example.appsforgood.data.*;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private TextView currentLocationText, dateText;
     private TextView shoesText, topText, bottomsText, accText;
@@ -216,7 +216,7 @@ public class MainActivity extends Activity {
         });
 
         thread.start();
-        try { thread.sleep(1000); } //to let the parsing thread finish it's parsing before progressing on main thread
+        try { thread.sleep(1800); } //to let the parsing thread finish it's parsing before progressing on main thread
         catch (InterruptedException e) { e.printStackTrace(); }
 
         //placeholder values
@@ -229,7 +229,7 @@ public class MainActivity extends Activity {
         shoes = s.getShoe(temp, isRaining, isSnowing);
         acc = a.getAcc(temp, isRaining, isSnowing, uvIndex);
 
-        topText.setText(tops);
+        topText.setText(tops + " temp: " + temp + " uvindex: " + uvIndex);
         bottomsText.setText(bottoms);
         shoesText.setText(shoes);
         accText.setText(acc);

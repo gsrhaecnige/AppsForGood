@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppsForGood">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
 
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -35,15 +35,15 @@
         <activity
             android:name=".ClothingActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat" />
-        <activity
-            android:name=".ForecastActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".MainActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".ForecastActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

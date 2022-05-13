@@ -41,7 +41,7 @@ import com.example.appsforgood.data.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView currentLocationText, dateText;
+    private TextView tempText, feelsText, weatherMainText;
     private TextView shoesText, topText, bottomsText, accText;
     private View weatherButton;
     private double lat, lon;
@@ -51,8 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
     private String tops, bottoms, shoes, acc;
     private boolean isRaining, isSnowing;
-    private double temp;
+    private double temp, feels;
     private int uvIndex;
+    private String weatherList;
 
     APICaller api;
     {
@@ -114,6 +115,59 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });*/
+
+        shoesText = findViewById(R.id.shoesText);
+        topText = findViewById(R.id.topsText);
+        bottomsText = findViewById(R.id.bottomsText);
+        accText = findViewById(R.id.accessoriesText);
+
+        tempText = findViewById(R.id.tempText);
+        feelsText = findViewById(R.id.feelsText);
+        weatherMainText = findViewById(R.id.weatherMainText);
+
+        // runs all the json parsing in a separate thread from the main to prevent errors
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try { jsonParser.convertJSON(); }
+                catch (IOException e) { e.printStackTrace(); }
+
+
+                try { temp = jsonParser.currentTemp(); }
+                catch (IOException e) { e.printStackTrace(); }
+
+                try { feels = jsonParser.currentFeels(); }
+                catch (IOException e) { e.printStackTrace(); }
+
+                try { uvIndex = (int) jsonParser.getUVI(); }
+                catch (IOException e) { e.printStackTrace(); }
+
+                try { weatherList = jsonParser.getWeatherList(); }
+                catch (IOException e) { e.printStackTrace(); }
+            }
+        });
+
+        thread.start();
+        try { thread.sleep(1500); } //to let the parsing thread finish it's parsing before progressing on main thread
+        catch (InterruptedException e) { e.printStackTrace(); }
+
+        //placeholder values
+        isRaining = true;
+        isSnowing = false;
+
+        tempText.setText(Double.toString(temp));
+        feelsText.setText(Double.toString(feels));
+        weatherMainText.setText(weatherList);
+
+        tops = t.getTop(temp);
+        bottoms = b.getBottoms(temp);
+        shoes = s.getShoe(temp, isRaining, isSnowing);
+        acc = a.getAcc(temp, isRaining, isSnowing, uvIndex);
+
+        topText.setText(tops);
+        bottomsText.setText(bottoms);
+        shoesText.setText(shoes);
+        accText.setText(acc);
     }
 
     /**

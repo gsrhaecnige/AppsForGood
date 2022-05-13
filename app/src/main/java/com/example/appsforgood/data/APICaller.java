@@ -20,6 +20,7 @@ public class APICaller{
         lon = longitude;
         url = new URL("https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude=minutely&units=imperial&appid=5232854b0e3330401c253b303df7212c");
 
+
     }
 
 

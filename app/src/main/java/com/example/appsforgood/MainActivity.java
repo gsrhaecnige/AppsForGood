@@ -26,6 +26,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     private String tops, bottoms, shoes, acc;
     private boolean isRaining, isSnowing;
     private int temp, feels;
-    private int uvIndex;
+    private double uvIndex;
     private String weatherList;
 
     //for testing purposes
@@ -176,14 +177,14 @@ public class MainActivity extends AppCompatActivity {
             isRaining = jsonParser.rain();
             isSnowing = jsonParser.snow();
 
-            tempText.setText(Integer.toString(temp));
-            feelsText.setText(Integer.toString(feels));
+            tempText.setText(Integer.toString(temp) + "\u00B0");
+            feelsText.setText(Integer.toString(feels) + "\u00B0");
             weatherMainText.setText(weatherList);
 
             tops = t.getTop(temp);
             bottoms = b.getBottoms(temp);
             shoes = s.getShoe(temp, isRaining, isSnowing);
-            acc = a.getAcc(temp, isRaining, isSnowing, uvIndex);
+            acc = a.getAcc(temp, isRaining, isSnowing, (int) uvIndex);
 
 
 

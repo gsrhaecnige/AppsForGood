@@ -114,7 +114,7 @@ public class JSONWeatherParser {
 	}
 
 	/**
-	 * accesor method to obtain the current time in unix
+	 * accessor method to obtain the current time in unix
 	 * @return the current time in unix
 	 * @throws IOException
 	 */

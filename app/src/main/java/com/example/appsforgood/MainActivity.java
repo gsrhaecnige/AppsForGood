@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -54,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
     private int temp, feels;
     private int uvIndex;
     private String weatherList;
+
+    //for testing purposes
+    private ArrayList<List<Weather__1>> current;
 
     APICaller api;
     {
@@ -120,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
             feelsText = findViewById(R.id.feelsText);
             weatherMainText = findViewById(R.id.weatherMainText);
 
+
+
             // runs all the json parsing in a separate thread from the main to prevent errors
             Thread thread = new Thread(new Runnable() {
                 @Override
@@ -154,12 +160,14 @@ public class MainActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+
+                    current = jsonParser.getHourWeather();
                 }
             });
 
             thread.start();
             try {
-                thread.sleep(3000);
+                thread.sleep(30000);
             } //to let the parsing thread finish it's parsing before progressing on main thread
             catch (InterruptedException e) {
                 e.printStackTrace();
@@ -178,7 +186,9 @@ public class MainActivity extends AppCompatActivity {
             shoes = s.getShoe(temp, isRaining, isSnowing);
             acc = a.getAcc(temp, isRaining, isSnowing, uvIndex);
 
-            topText.setText(tops);
+
+
+            topText.setText(tops + " " + current.get(0).get(0).toString());
             bottomsText.setText(bottoms);
             shoesText.setText(shoes);
             accText.setText(acc);

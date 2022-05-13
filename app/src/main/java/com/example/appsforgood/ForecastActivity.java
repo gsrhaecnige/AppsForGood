@@ -106,7 +106,7 @@ public class ForecastActivity extends MainActivity {
         thread.start();
 
         try {
-            thread.sleep(1500);
+            thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

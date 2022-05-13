@@ -90,7 +90,7 @@ public class ClothingActivity extends MainActivity {
 
         thread.start();
         try {
-            thread.sleep(10000);
+            thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

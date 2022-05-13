@@ -18,12 +18,6 @@ public class ForecastActivity extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forecast);
-    }
-
-    protected void onStart() {
-        super.onStart();
-        //draw visual elements and do animations in here?
-        //shoes = findViewById(R.id.shoesRecText);
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -77,6 +71,8 @@ public class ForecastActivity extends MainActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
+
             }
 
             //getAvgFeelsLike();
@@ -86,10 +82,20 @@ public class ForecastActivity extends MainActivity {
         thread.start();
 
         try {
-            thread.sleep(10000);
+            thread.sleep(1500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    protected void onStart() {
+        super.onStart();
+        //draw visual elements and do animations in here?
+        //shoes = findViewById(R.id.shoesRecText);
+
+
+
+
     }
 
 };

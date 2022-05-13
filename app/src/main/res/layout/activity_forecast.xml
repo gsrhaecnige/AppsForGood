@@ -47,7 +47,6 @@
                 android:layout_height="37dp"
                 android:layout_marginTop="88dp"
                 android:layout_marginEnd="44dp"
-                android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,7 +56,6 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="44dp"
-                android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/temperatureText"
                 tools:ignore="MissingConstraints" />
@@ -68,7 +66,6 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="112dp"
                 android:layout_marginTop="32dp"
-                android:text="TextView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -78,7 +75,6 @@
                 android:layout_height="26dp"
                 android:layout_marginStart="112dp"
                 android:layout_marginTop="24dp"
-                android:text="TextView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/humidityText" />
 
@@ -88,7 +84,6 @@
                 android:layout_height="37dp"
                 android:layout_marginStart="96dp"
                 android:layout_marginTop="16dp"
-                android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/UVindexText"
@@ -100,12 +95,11 @@
                 android:layout_height="91dp"
                 android:layout_marginEnd="28dp"
                 android:layout_marginBottom="40dp"
-                android:text="TextView"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
-                android:id="@+id/basicForecastText"
+                android:id="@+id/weatherText"
                 android:layout_width="94dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="28dp"
@@ -118,6 +112,7 @@
 
             <Button
                 android:id="@+id/forecastBackButton"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="67dp"
                 android:layout_height="64dp"
                 android:backgroundTint="@color/trans"
@@ -128,7 +123,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0"
-                style="?android:attr/borderlessButtonStyle"/>
+                tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -146,7 +141,6 @@
                 android:layout_width="85dp"
                 android:layout_height="91dp"
                 android:layout_marginStart="16dp"
-                android:text="TextView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
                 app:layout_constraintTop_toTopOf="@id/constraintLayout5" />
@@ -156,7 +150,6 @@
                 android:layout_width="85dp"
                 android:layout_height="91dp"
                 android:layout_marginStart="18dp"
-                android:text="TextView"
                 app:layout_constraintStart_toEndOf="@+id/textView1"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -165,7 +158,6 @@
                 android:layout_width="85dp"
                 android:layout_height="91dp"
                 android:layout_marginStart="16dp"
-                android:text="TextView"
                 app:layout_constraintStart_toEndOf="@+id/textView2"
                 app:layout_constraintTop_toTopOf="@id/constraintLayout5" />
 
@@ -174,7 +166,6 @@
                 android:layout_width="85dp"
                 android:layout_height="91dp"
                 android:layout_marginEnd="16dp"
-                android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.955"
                 app:layout_constraintStart_toEndOf="@+id/textView3"
@@ -186,7 +177,6 @@
                 android:layout_height="91dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/textView1" />
 
@@ -196,7 +186,6 @@
                 android:layout_height="91dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
                 app:layout_constraintStart_toEndOf="@+id/textView5"
                 app:layout_constraintTop_toBottomOf="@id/textView2" />
 
@@ -206,7 +195,6 @@
                 android:layout_height="91dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
                 app:layout_constraintStart_toEndOf="@+id/textView6"
                 app:layout_constraintTop_toBottomOf="@id/textView3" />
 
@@ -215,7 +203,6 @@
                 android:layout_width="85dp"
                 android:layout_height="91dp"
                 android:layout_marginTop="8dp"
-                android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.448"
                 app:layout_constraintStart_toEndOf="@+id/textView7"
@@ -227,7 +214,6 @@
                 android:layout_height="91dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
-                android:text="TextView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -237,7 +223,6 @@
                 android:layout_height="91dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
-                android:text="TextView"
                 app:layout_constraintStart_toEndOf="@+id/textView9"
                 app:layout_constraintTop_toBottomOf="@id/textView6" />
 
@@ -247,7 +232,6 @@
                 android:layout_height="91dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
-                android:text="TextView"
                 app:layout_constraintStart_toEndOf="@+id/textView10"
                 app:layout_constraintTop_toBottomOf="@id/textView7" />
 
@@ -256,7 +240,6 @@
                 android:layout_width="85dp"
                 android:layout_height="91dp"
                 android:layout_marginTop="4dp"
-                android:text="TextView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.792"
                 app:layout_constraintStart_toEndOf="@+id/textView11"

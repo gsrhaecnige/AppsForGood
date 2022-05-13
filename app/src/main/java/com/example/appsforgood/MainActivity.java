@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String tops, bottoms, shoes, acc;
     private boolean isRaining, isSnowing;
-    private double temp, feels;
+    private int temp, feels;
     private int uvIndex;
     private String weatherList;
 
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
                     44);
         }
 
-        if (isServicesOK()) {
+        if(isServicesOK()) {
             //init();
 
         /*weatherButton.setOnClickListener(new View.OnClickListener() {
@@ -132,13 +132,13 @@ public class MainActivity extends AppCompatActivity {
 
 
                     try {
-                        temp = jsonParser.currentTemp();
+                        temp = (int) jsonParser.currentTemp();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
 
                     try {
-                        feels = jsonParser.currentFeels();
+                        feels = (int) jsonParser.currentFeels();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
 
             thread.start();
             try {
-                thread.sleep(1500);
+                thread.sleep(3000);
             } //to let the parsing thread finish it's parsing before progressing on main thread
             catch (InterruptedException e) {
                 e.printStackTrace();
@@ -169,8 +169,8 @@ public class MainActivity extends AppCompatActivity {
             isRaining = true;
             isSnowing = false;
 
-            tempText.setText(Double.toString(temp));
-            feelsText.setText(Double.toString(feels));
+            tempText.setText(Integer.toString(temp));
+            feelsText.setText(Integer.toString(feels));
             weatherMainText.setText(weatherList);
 
             tops = t.getTop(temp);
@@ -262,6 +262,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+
     }
 
     /**

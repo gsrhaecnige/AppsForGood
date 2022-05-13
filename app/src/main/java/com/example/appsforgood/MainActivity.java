@@ -167,15 +167,14 @@ public class MainActivity extends AppCompatActivity {
 
             thread.start();
             try {
-                thread.sleep(30000);
+                thread.sleep(10000);
             } //to let the parsing thread finish it's parsing before progressing on main thread
             catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            //placeholder values
-            isRaining = true;
-            isSnowing = false;
+            isRaining = jsonParser.rain();
+            isSnowing = jsonParser.snow();
 
             tempText.setText(Integer.toString(temp));
             feelsText.setText(Integer.toString(feels));
@@ -188,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            topText.setText(tops + " " + current.get(0).get(0).toString());
+            topText.setText(tops + " uvindex is " + uvIndex);
             bottomsText.setText(bottoms);
             shoesText.setText(shoes);
             accText.setText(acc);

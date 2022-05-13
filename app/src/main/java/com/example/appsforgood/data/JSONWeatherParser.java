@@ -273,5 +273,33 @@ public class JSONWeatherParser {
 		else
 			return rain1h;
 	}
+
+	/**
+	 * this method will determine if there is supposed to be rain within the hour.
+	 * @return a boolean representative of if or if not it is supposed to rain.
+	 */
+	public boolean rain(){
+		String weatherStr = hourWeather.get(0).get(0).toString();
+
+		if ((weatherStr.charAt(30)=='R' || weatherStr.charAt(31)=='R') && (weatherStr.charAt(33)=='n' || weatherStr.charAt(34)=='n'))
+			return true;
+
+		else
+			return false;
+	}
+
+	/**
+	 * this method determines if it is supposed to snow within the hour
+	 * @return a boolean representative of if or if not it is going to snow
+	 */
+	public boolean snow(){
+		String weatherStr = hourWeather.get(0).get(0).toString();
+
+		if (weatherStr.charAt(30)=='S' && weatherStr.charAt(33)=='w')
+			return true;
+
+		else
+			return false;
+	}
 }
 

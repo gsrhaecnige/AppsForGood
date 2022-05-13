@@ -84,11 +84,6 @@ public class MainActivity extends AppCompatActivity {
         //dateText = findViewById(R.id.dateText);
         //dateText.setText(getDate());
 
-
-        //JUST TESTING HERE
-        shoesText = findViewById(R.id.shoesText);
-        shoesText.setText("TESTTT");
-
         weatherButton = findViewById(R.id.weatherButton);
         //currentLocationText = findViewById(R.id.dateText);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -100,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
                     44);
         }
 
-        if(isServicesOK()){
+        if (isServicesOK()) {
             //init();
-        }
+
         /*weatherButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,58 +111,78 @@ public class MainActivity extends AppCompatActivity {
             }
         });*/
 
-        shoesText = findViewById(R.id.shoesText);
-        topText = findViewById(R.id.topsText);
-        bottomsText = findViewById(R.id.bottomsText);
-        accText = findViewById(R.id.accessoriesText);
+            shoesText = findViewById(R.id.shoesText);
+            topText = findViewById(R.id.topsText);
+            bottomsText = findViewById(R.id.bottomsText);
+            accText = findViewById(R.id.accessoriesText);
 
-        tempText = findViewById(R.id.tempText);
-        feelsText = findViewById(R.id.feelsText);
-        weatherMainText = findViewById(R.id.weatherMainText);
+            tempText = findViewById(R.id.tempText);
+            feelsText = findViewById(R.id.feelsText);
+            weatherMainText = findViewById(R.id.weatherMainText);
 
-        // runs all the json parsing in a separate thread from the main to prevent errors
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try { jsonParser.convertJSON(); }
-                catch (IOException e) { e.printStackTrace(); }
+            // runs all the json parsing in a separate thread from the main to prevent errors
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        jsonParser.convertJSON();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
 
-                try { temp = jsonParser.currentTemp(); }
-                catch (IOException e) { e.printStackTrace(); }
+                    try {
+                        temp = jsonParser.currentTemp();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                try { feels = jsonParser.currentFeels(); }
-                catch (IOException e) { e.printStackTrace(); }
+                    try {
+                        feels = jsonParser.currentFeels();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                try { uvIndex = (int) jsonParser.getUVI(); }
-                catch (IOException e) { e.printStackTrace(); }
+                    try {
+                        uvIndex = (int) jsonParser.getUVI();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                try { weatherList = jsonParser.getWeatherList(); }
-                catch (IOException e) { e.printStackTrace(); }
+                    try {
+                        weatherList = jsonParser.getWeatherList();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            thread.start();
+            try {
+                thread.sleep(1500);
+            } //to let the parsing thread finish it's parsing before progressing on main thread
+            catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        });
 
-        thread.start();
-        try { thread.sleep(1500); } //to let the parsing thread finish it's parsing before progressing on main thread
-        catch (InterruptedException e) { e.printStackTrace(); }
+            //placeholder values
+            isRaining = true;
+            isSnowing = false;
 
-        //placeholder values
-        isRaining = true;
-        isSnowing = false;
+            tempText.setText(Double.toString(temp));
+            feelsText.setText(Double.toString(feels));
+            weatherMainText.setText(weatherList);
 
-        tempText.setText(Double.toString(temp));
-        feelsText.setText(Double.toString(feels));
-        weatherMainText.setText(weatherList);
+            tops = t.getTop(temp);
+            bottoms = b.getBottoms(temp);
+            shoes = s.getShoe(temp, isRaining, isSnowing);
+            acc = a.getAcc(temp, isRaining, isSnowing, uvIndex);
 
-        tops = t.getTop(temp);
-        bottoms = b.getBottoms(temp);
-        shoes = s.getShoe(temp, isRaining, isSnowing);
-        acc = a.getAcc(temp, isRaining, isSnowing, uvIndex);
-
-        topText.setText(tops);
-        bottomsText.setText(bottoms);
-        shoesText.setText(shoes);
-        accText.setText(acc);
+            topText.setText(tops);
+            bottomsText.setText(bottoms);
+            shoesText.setText(shoes);
+            accText.setText(acc);
+        }
     }
 
     /**
@@ -247,46 +262,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
-        shoesText = findViewById(R.id.shoesText);
-        topText = findViewById(R.id.topsText);
-        bottomsText = findViewById(R.id.bottomsText);
-        accText = findViewById(R.id.accessoriesText);
-
-        // runs all the json parsing in a separate thread from the main to prevent errors
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try { jsonParser.convertJSON(); }
-                catch (IOException e) { e.printStackTrace(); }
-
-
-                try { temp = jsonParser.currentTemp(); }
-                catch (IOException e) { e.printStackTrace(); }
-
-                try { uvIndex = (int) jsonParser.getUVI(); }
-                catch (IOException e) { e.printStackTrace(); }
-            }
-        });
-
-        thread.start();
-        try { thread.sleep(1800); } //to let the parsing thread finish it's parsing before progressing on main thread
-        catch (InterruptedException e) { e.printStackTrace(); }
-
-        //placeholder values
-        isRaining = true;
-        isSnowing = false;
-
-
-        tops = t.getTop(temp);
-        bottoms = b.getBottoms(temp);
-        shoes = s.getShoe(temp, isRaining, isSnowing);
-        acc = a.getAcc(temp, isRaining, isSnowing, uvIndex);
-
-        topText.setText(tops + " temp: " + temp + " uvindex: " + uvIndex);
-        bottomsText.setText(bottoms);
-        shoesText.setText(shoes);
-        accText.setText(acc);
     }
 
     /**

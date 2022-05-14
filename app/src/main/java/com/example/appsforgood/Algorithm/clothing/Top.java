@@ -70,16 +70,16 @@ public class Top extends Clothing{
      */
     private static String shirtType(int key){
         if (key == 1)
-            return "tank top";
+            return "Tank Top";
 
         if (key == 2)
-            return "t-shirt";
+            return "T-Shirt";
 
         if (key == 3)
-            return "long sleeve";
+            return "Long Sleeve";
 
         if (key == 4)
-            return "sweater";
+            return "Sweater";
 
         else
             return null;

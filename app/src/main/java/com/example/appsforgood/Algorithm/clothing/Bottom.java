@@ -58,10 +58,10 @@ public class Bottom extends Clothing {
      */
     private String bottomType(int key){
         if (key == 1)
-            return "shorts";
+            return "Shorts";
 
         if (key == 2)
-            return "long pants";
+            return "Long Pants";
 
         else
             return null;

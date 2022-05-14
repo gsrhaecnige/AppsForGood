@@ -71,19 +71,19 @@ public class Shoes extends Clothing{
      */
     private String shoeType(int key){
         if (key == 1)
-            return "Snow boots";
+            return "Snow Boots";
 
         if (key == 2)
-            return "Rain boots";
+            return "Rain Boots";
 
         if (key == 3)
             return "Sandals";
 
         if (key == 4)
-            return "Sneakers or casual shoes";
+            return "Sneakers or Casual Shoes";
 
         if (key == 5)
-            return "Warm boots";
+            return "Warm Boots";
 
         else
             return null;

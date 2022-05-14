@@ -3,8 +3,10 @@ package com.example.appsforgood;
 import androidx.annotation.RequiresApi;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.appsforgood.data.Weather__1;
@@ -19,9 +21,13 @@ public class ForecastActivity extends MainActivity {
     private TextView tempText, feelsText, humText, uvText, windText, weatherText, descriptionText;
     private TextView textView1, textView2, textView3, textView4, textView5, textView6,
             textView7, textView8, textView9, textView10, textView11, textView12;
+    private ImageView iconImg;
     int temp, feels, hum, windSpeed, windDeg, rainChance;
     double uvi;
     private String weatherList;
+    private String icon;
+
+    private Drawable iconDraw;
 
     /**
      * Loads the Forecast view
@@ -32,6 +38,8 @@ public class ForecastActivity extends MainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forecast);
+
+        iconImg = (ImageView) findViewById(R.id.imageView4);
 
         tempText = findViewById(R.id.temperatureText);
         feelsText = findViewById(R.id.feelslikeText);
@@ -84,7 +92,7 @@ public class ForecastActivity extends MainActivity {
                 }
 
                 try {
-                    uvi = (int) jsonParser.currentUV();
+                    uvi = (int) jsonParser.getUVI();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -104,6 +112,9 @@ public class ForecastActivity extends MainActivity {
                 try { weatherList = jsonParser.getWeatherList(); }
                 catch (IOException e) { e.printStackTrace(); }
 
+                icon = jsonParser.getHourWeather().get(0).get(0).getIcon();
+                iconDraw = ForecastActivity.super.LoadImageFromWebOperations(icon);
+
                 /*
                 try { rainChance = jsonParser.getRain(); }
                 catch (IOException e) { e.printStackTrace(); }
@@ -122,6 +133,8 @@ public class ForecastActivity extends MainActivity {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        iconImg.setImageDrawable(iconDraw);
 
         tempText.setText(Integer.toString(temp) + "\u00B0");
         feelsText.setText(Integer.toString(feels) + "\u00B0");

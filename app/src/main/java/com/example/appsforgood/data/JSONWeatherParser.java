@@ -28,7 +28,7 @@ public class JSONWeatherParser {
 		}
 
 	/**
-	 * big method that reformats the json and puts it into various arraylists for easier parsing
+	 * big method that reformats the json from the api and puts it into various arraylists for easier parsing
 	 * @throws IOException
 	 */
 	public void convertJSON() throws IOException {
@@ -187,19 +187,6 @@ public class JSONWeatherParser {
 
 		Current current = weatherSample.getCurrent();
 		return current.getHumidity();
-	}
-
-
-	public int currentUV() throws IOException {
-
-		ObjectMapper mapper = new ObjectMapper();
-
-		SampleWeather weatherSample = mapper.readValue(
-				caller.getData(),
-				SampleWeather.class);
-
-		Current current = weatherSample.getCurrent();
-		return current.getUvi();
 	}
 
 	/**

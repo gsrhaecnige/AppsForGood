@@ -10,18 +10,22 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView tempText, feelsText, weatherMainText;
     private TextView shoesText, topText, bottomsText, accText;
+    private ImageView iconImg;
     private View weatherButton;
     private double lat, lon;
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -56,9 +61,11 @@ public class MainActivity extends AppCompatActivity {
     private int temp, feels;
     private double uvIndex;
     private String weatherList;
+    private String icon;
 
-    //for testing purposes
     private ArrayList<List<Weather__1>> current;
+
+    private Drawable iconDraw;
 
     APICaller api;
     {
@@ -125,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
             feelsText = findViewById(R.id.feelsText);
             weatherMainText = findViewById(R.id.weatherMainText);
 
-
+            iconImg = (ImageView)findViewById(R.id.imageView2);
 
             // runs all the json parsing in a separate thread from the main to prevent errors
             Thread thread = new Thread(new Runnable() {
@@ -163,16 +170,21 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     current = jsonParser.getHourWeather();
+                    icon = current.get(0).get(0).getIcon();
+
+                    iconDraw = LoadImageFromWebOperations(icon);
                 }
             });
 
             thread.start();
             try {
-                thread.sleep(5000);
+                thread.sleep(10000);
             } //to let the parsing thread finish it's parsing before progressing on main thread
             catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
+            iconImg.setImageDrawable(iconDraw);
 
             isRaining = jsonParser.rain();
             isSnowing = jsonParser.snow();
@@ -338,6 +350,23 @@ public class MainActivity extends AppCompatActivity {
         String date = df.format(Calendar.getInstance().getTime());
         return date;
     }
+
+    /**
+     * method to pull a graphical representation of the weather from the api
+     * @param id the string id of the current weather status as given by the api
+     * @return a Drawable object
+     */
+    public static Drawable LoadImageFromWebOperations(String id) {
+        String url = "https://openweathermap.org/img/wn/" + id + "@2x.png";
+        try {
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable d = Drawable.createFromStream(is, null);
+            return d;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 
 
 

@@ -6,7 +6,6 @@ import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,17 +15,11 @@ import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -58,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private String weatherList;
 
     //for testing purposes
-    private ArrayList<List<Weather__1>> current;
+    //private ArrayList<List<Weather__1>> current;
 
     APICaller api;
     {
@@ -125,8 +118,6 @@ public class MainActivity extends AppCompatActivity {
             feelsText = findViewById(R.id.feelsText);
             weatherMainText = findViewById(R.id.weatherMainText);
 
-
-
             // runs all the json parsing in a separate thread from the main to prevent errors
             Thread thread = new Thread(new Runnable() {
                 @Override
@@ -136,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
 
                     try {
                         temp = (int) jsonParser.currentTemp();
@@ -162,13 +152,13 @@ public class MainActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    current = jsonParser.getHourWeather();
+                    //current = jsonParser.getHourWeather();
                 }
             });
 
             thread.start();
             try {
-                thread.sleep(5000);
+                thread.sleep(3500);
             } //to let the parsing thread finish it's parsing before progressing on main thread
             catch (InterruptedException e) {
                 e.printStackTrace();
@@ -177,16 +167,14 @@ public class MainActivity extends AppCompatActivity {
             isRaining = jsonParser.rain();
             isSnowing = jsonParser.snow();
 
-            tempText.setText(Integer.toString(temp) + "\u00B0");
-            feelsText.setText(Integer.toString(feels) + "\u00B0");
+            tempText.setText(temp + "\u00B0");
+            feelsText.setText(feels + "\u00B0");
             weatherMainText.setText(weatherList);
 
             tops = t.getTop(temp);
             bottoms = b.getBottoms(temp);
             shoes = s.getShoe(temp, isRaining, isSnowing);
             acc = a.getAcc(temp, isRaining, isSnowing, (int) uvIndex);
-
-
 
             topText.setText(tops);
             bottomsText.setText(bottoms);
@@ -256,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
             //an error occured but we can resolve it
-            Log.d(TAG, "isServicesOK: an error occured but we can fix it");
+            Log.d(TAG, "isServicesOK: an error occurred but we can fix it");
             Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MainActivity.this, available, ERROR_DIALOG_REQUEST);
             dialog.show();
         }else{
@@ -305,10 +293,12 @@ public class MainActivity extends AppCompatActivity {
      * Transitions to Clothing activity
      * @param view the current View
      */
-    public void performClothing(View view) {
+    /*public void performClothing(View view) {
         Intent intent = new Intent(this, ClothingActivity.class);
         startActivity(intent);
     }
+
+     */
 
     /**
      * Transitions to Map activity
@@ -324,20 +314,24 @@ public class MainActivity extends AppCompatActivity {
      * Transitions to Main activity
      * @param view the current View
      */
-    public void performMain(View view) {
+    /*public void performMain(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
+
+     */
 
     /**
      * Gets the date in the format "Weekday, Month Day, Time Timezone"
      * @return date the formatted date as String
      */
-    public String getDate() {
+    /*public String getDate() {
         DateFormat df = new SimpleDateFormat("EEE, MMM d, HH:mm z");
         String date = df.format(Calendar.getInstance().getTime());
         return date;
     }
+
+     */
 
 
 

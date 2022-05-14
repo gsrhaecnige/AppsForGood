@@ -42,9 +42,12 @@ public class ClothingActivity extends MainActivity {
         super.performForecast(view);
     }
 
+    /*
     public void performMain(View view) {
         super.performMain(view);
     }
+
+     */
 
     /*
     private void getAvgFeelsLike(){

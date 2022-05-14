@@ -22,7 +22,7 @@ public class ForecastActivity extends MainActivity {
     private TextView textView1, textView2, textView3, textView4, textView5, textView6,
             textView7, textView8, textView9, textView10, textView11, textView12;
     private ImageView iconImg;
-    int temp, feels, hum, windSpeed, windDeg, rainChance;
+    int temp, feels, hum, windSpeed, windDeg, rainChance, cloudCoverage;
     double uvi;
     private String weatherList;
     private String icon;
@@ -112,6 +112,9 @@ public class ForecastActivity extends MainActivity {
                 try { weatherList = jsonParser.getWeatherList(); }
                 catch (IOException e) { e.printStackTrace(); }
 
+                try { cloudCoverage = jsonParser.getClouds(); }
+                catch (IOException e) { e.printStackTrace(); }
+
                 icon = jsonParser.getHourWeather().get(0).get(0).getIcon();
                 iconDraw = ForecastActivity.super.LoadImageFromWebOperations(icon);
 
@@ -136,12 +139,13 @@ public class ForecastActivity extends MainActivity {
 
         iconImg.setImageDrawable(iconDraw);
 
-        tempText.setText(Integer.toString(temp) + "\u00B0");
-        feelsText.setText(Integer.toString(feels) + "\u00B0");
-        humText.setText(Integer.toString(hum) + "%");
+        tempText.setText(temp + "\u00B0");
+        feelsText.setText(feels + "\u00B0");
+        humText.setText(hum + "%");
         uvText.setText(Double.toString(uvi));
         weatherText.setText(weatherList);
         windText.setText(windSpeed + " mph");
+        descriptionText.setText("Cloud Coverage: " + cloudCoverage + "%");
 
         textView1.setText(militaryTime(getTime(), 1)  + ":00" +"\n" + Integer.toString((int) getHourly(0)) + "\u00B0");
         textView2.setText(militaryTime(getTime(), 2)  + ":00" +"\n" + Integer.toString((int) getHourly(1)) + "\u00B0");
@@ -158,6 +162,10 @@ public class ForecastActivity extends MainActivity {
 
     }
 
+    /**
+     * Initializes the user interface
+     * Makes the activity visible to the user
+     */
     protected void onStart() {
         super.onStart();
         //draw visual elements and do animations in here?
@@ -165,21 +173,33 @@ public class ForecastActivity extends MainActivity {
 
     }
 
+    /**
+     * Gets the temperatures within the coming 48 hours
+     * @param hour the number of hours between the current time and the retrieved time
+     * @return the temperature at the given hour
+     */
     private double getHourly(int hour) {
         ArrayList<Double> hourTemps = jsonParser.getHourTemp();
         return hourTemps.get(hour);
     }
 
+    /**
+     * Gets the hour of the current time
+     * @return the hour of the current time
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private int getTime() {
         LocalDateTime date = LocalDateTime.now();
         return date.getHour();
     }
 
+    /*
     private List<Weather__1> getDesc(int hour) {
         ArrayList<List<Weather__1>> descriptions = jsonParser.getHourWeather();
         return descriptions.get(hour);
     }
+
+     */
 
     /**
      * this helper method is for making sure the times in the upcoming forecast grid stay in the 24 hr bounds

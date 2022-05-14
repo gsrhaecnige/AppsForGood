@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Drawable iconDraw;
 
-    APICaller api;
+    private APICaller api;
     {
         try {
             api = new APICaller(getLatInit(),getLonInit());
@@ -355,7 +355,7 @@ public class MainActivity extends AppCompatActivity {
      */
 
     /**
-     * method to pull a graphical representation of the weather from the api
+     * Retrieves a visual representation of the weather from OpenWeatherApi
      * @param id the string id of the current weather status as given by the api
      * @return a Drawable object
      */

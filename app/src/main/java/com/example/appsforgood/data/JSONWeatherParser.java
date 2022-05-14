@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class JSONWeatherParser {
 
@@ -270,6 +269,7 @@ public class JSONWeatherParser {
 		return current.getWeather().get(0).getDescription();
 	}
 
+	/*
 	public Double getRain() throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -284,6 +284,18 @@ public class JSONWeatherParser {
 			return 0.0;
 		else
 			return rain1h;
+	}
+	*/
+
+	public Integer getClouds() throws IOException{
+		ObjectMapper mapper = new ObjectMapper();
+
+		SampleWeather weatherSample = mapper.readValue(
+				caller.getData(),
+				SampleWeather.class);
+
+		Current current = weatherSample.getCurrent();
+		return current.getClouds();
 	}
 
 	/**

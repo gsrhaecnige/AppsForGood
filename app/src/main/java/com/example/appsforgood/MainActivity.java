@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity {
 
             thread.start();
             try {
-                thread.sleep(10000);
+                thread.sleep(5000);
             } //to let the parsing thread finish it's parsing before progressing on main thread
             catch (InterruptedException e) {
                 e.printStackTrace();
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-            topText.setText(tops + " uvindex is " + uvIndex);
+            topText.setText(tops);
             bottomsText.setText(bottoms);
             shoesText.setText(shoes);
             accText.setText(acc);

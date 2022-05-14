@@ -130,18 +130,18 @@ public class ForecastActivity extends MainActivity {
         weatherText.setText(weatherList);
         windText.setText(windSpeed + " mph");
 
-        textView1.setText(getTime() + 1  + ":00" +"\n" + Integer.toString((int) getHourly(0)) + "\u00B0");
-        textView2.setText(getTime() + 2  + ":00" +"\n" + Integer.toString((int) getHourly(1)) + "\u00B0");
-        textView3.setText(getTime() + 3  + ":00" +"\n" + Integer.toString((int) getHourly(2)) + "\u00B0");
-        textView4.setText(getTime() + 4  + ":00" +"\n" + Integer.toString((int) getHourly(3)) + "\u00B0");
-        textView5.setText(getTime() + 5  + ":00" +"\n" + Integer.toString((int) getHourly(4)) + "\u00B0");
-        textView6.setText(getTime() + 6  + ":00" +"\n" + Integer.toString((int) getHourly(5)) + "\u00B0");
-        textView7.setText(getTime() + 7  + ":00" +"\n" + Integer.toString((int) getHourly(6)) + "\u00B0");
-        textView8.setText(getTime() + 8  + ":00" +"\n" + Integer.toString((int) getHourly(7)) + "\u00B0");
-        textView9.setText(getTime() + 9  + ":00" +"\n" + Integer.toString((int)getHourly(8)) + "\u00B0");
-        textView10.setText(getTime() + 10  + ":00" +"\n" + Integer.toString((int) getHourly(9)) + "\u00B0");
-        textView11.setText(getTime() + 11  + ":00" +"\n" + Integer.toString((int) getHourly(10)) + "\u00B0");
-        textView12.setText(getTime() + 12 + ":00" +"\n" + Integer.toString((int) getHourly(11)) + "\u00B0");
+        textView1.setText(militaryTime(getTime(), 1)  + ":00" +"\n" + Integer.toString((int) getHourly(0)) + "\u00B0");
+        textView2.setText(militaryTime(getTime(), 2)  + ":00" +"\n" + Integer.toString((int) getHourly(1)) + "\u00B0");
+        textView3.setText(militaryTime(getTime(), 3)  + ":00" +"\n" + Integer.toString((int) getHourly(2)) + "\u00B0");
+        textView4.setText(militaryTime(getTime(), 4)  + ":00" +"\n" + Integer.toString((int) getHourly(3)) + "\u00B0");
+        textView5.setText(militaryTime(getTime(), 5)  + ":00" +"\n" + Integer.toString((int) getHourly(4)) + "\u00B0");
+        textView6.setText(militaryTime(getTime(), 6)  + ":00" +"\n" + Integer.toString((int) getHourly(5)) + "\u00B0");
+        textView7.setText(militaryTime(getTime(), 7)  + ":00" +"\n" + Integer.toString((int) getHourly(6)) + "\u00B0");
+        textView8.setText(militaryTime(getTime(), 8)  + ":00" +"\n" + Integer.toString((int) getHourly(7)) + "\u00B0");
+        textView9.setText(militaryTime(getTime(), 9)  + ":00" +"\n" + Integer.toString((int)getHourly(8)) + "\u00B0");
+        textView10.setText(militaryTime(getTime(), 10)  + ":00" +"\n" + Integer.toString((int) getHourly(9)) + "\u00B0");
+        textView11.setText(militaryTime(getTime(), 11)  + ":00" +"\n" + Integer.toString((int) getHourly(10)) + "\u00B0");
+        textView12.setText(militaryTime(getTime(), 12) + ":00" +"\n" + Integer.toString((int) getHourly(11)) + "\u00B0");
 
     }
 
@@ -166,6 +166,22 @@ public class ForecastActivity extends MainActivity {
     private List<Weather__1> getDesc(int hour) {
         ArrayList<List<Weather__1>> descriptions = jsonParser.getHourWeather();
         return descriptions.get(hour);
+    }
+
+    /**
+     * this helper method is for making sure the times in the upcoming forecast grid stay in the 24 hr bounds
+     * @param time an integer of the time
+     * @param n the number cell
+     * @return an int of time + n in mod 24 if time + n != 12 or 24
+     */
+    private int militaryTime(int time, int n){
+       int newTime = time + n;
+
+       if (newTime == 12 || newTime == 24)
+           return newTime;
+
+       else
+           return newTime %24;
     }
 
 };

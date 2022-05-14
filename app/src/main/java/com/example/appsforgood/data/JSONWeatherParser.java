@@ -17,12 +17,20 @@ public class JSONWeatherParser {
 	ArrayList<Integer> hourHum = new ArrayList<>();
 	ArrayList<List<Weather__1>> hourWeather = new ArrayList<>();
 
+	/**
+	 * constructor for the JSONWeatherParser class
+	 * @param call an APICaller object
+	 */
 	public JSONWeatherParser(APICaller call){
 
 		caller = call;
 
 		}
 
+	/**
+	 * big method that reformats the json and puts it into various arraylists for easier parsing
+	 * @throws IOException
+	 */
 	public void convertJSON() throws IOException {
 
 			// JSON file to Java object
@@ -181,6 +189,7 @@ public class JSONWeatherParser {
 		return current.getHumidity();
 	}
 
+
 	public int currentUV() throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -193,6 +202,11 @@ public class JSONWeatherParser {
 		return current.getUvi();
 	}
 
+	/**
+	 * gets the current wind speed
+	 * @return double in miles per hour of the wind speed
+	 * @throws IOException
+	 */
 	public double currentWindSp() throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -204,6 +218,7 @@ public class JSONWeatherParser {
 		Current current = weatherSample.getCurrent();
 		return current.getWindSpeed();
 	}
+
 
 	public int currentWindDeg() throws IOException {
 
@@ -234,6 +249,11 @@ public class JSONWeatherParser {
 		return current.getWeather();
 	}
 
+	/**
+	 * retrieves the UV index value from the current weather.
+	 * @return a double of the UV index value
+	 * @throws IOException
+	 */
 	public double getUVI() throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -246,6 +266,11 @@ public class JSONWeatherParser {
 		return current.getUvi();
 	}
 
+	/**
+	 * gets the current weather's description from the api
+	 * @return a string description of the current weather
+	 * @throws IOException
+	 */
 	public String getWeatherList() throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -276,6 +301,7 @@ public class JSONWeatherParser {
 
 	/**
 	 * this method will determine if there is supposed to be rain within the hour.
+	 * only looks at the hourly data for the hour it's called during. later might change to looking at the next five hours.
 	 * @return a boolean representative of if or if not it is supposed to rain.
 	 */
 	public boolean rain(){
@@ -290,6 +316,7 @@ public class JSONWeatherParser {
 
 	/**
 	 * this method determines if it is supposed to snow within the hour
+	 * only looks at the hourly data for the hour it's called during. later might change to looking at the next five hours.
 	 * @return a boolean representative of if or if not it is going to snow
 	 */
 	public boolean snow(){

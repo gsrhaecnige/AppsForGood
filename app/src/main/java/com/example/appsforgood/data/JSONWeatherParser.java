@@ -287,6 +287,11 @@ public class JSONWeatherParser {
 	}
 	*/
 
+	/**
+	 * Gets the current cloud coverage percentage
+	 * @return the current cloud coverage percentage
+	 * @throws IOException
+	 */
 	public Integer getClouds() throws IOException{
 		ObjectMapper mapper = new ObjectMapper();
 

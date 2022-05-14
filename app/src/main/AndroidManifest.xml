@@ -36,10 +36,6 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".ClothingActivity"
-            android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
             android:name=".ForecastActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />

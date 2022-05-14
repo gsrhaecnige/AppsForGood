@@ -139,7 +139,7 @@ public class JSONWeatherParser {
 	}
 
 	/**
-	 * accesor method to obtain the current temperature
+	 * accessor method to obtain the current temperature
 	 * @return the current temperature
 	 * @throws IOException
 	 */
@@ -156,7 +156,7 @@ public class JSONWeatherParser {
 	}
 
 	/**
-	 * accesor method to obtain the current "feels-like" temperature
+	 * accessor method to obtain the current "feels-like" temperature
 	 * @return the current "feels-like" temperature
 	 * @throws IOException
 	 */
@@ -173,7 +173,7 @@ public class JSONWeatherParser {
 	}
 
 	/**
-	 * accesor method to obtain the current humidity
+	 * accessor method to obtain the current humidity
 	 * @return the current humidity
 	 * @throws IOException
 	 */
@@ -207,6 +207,11 @@ public class JSONWeatherParser {
 	}
 
 
+	/**
+	 * gets the wind direction
+	 * @return an int of the wind direction in degrees
+	 * @throws IOException
+	 */
 	public int currentWindDeg() throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -270,6 +275,7 @@ public class JSONWeatherParser {
 		return current.getWeather().get(0).getDescription();
 	}
 
+	/*
 	public Double getRain() throws IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -285,6 +291,7 @@ public class JSONWeatherParser {
 		else
 			return rain1h;
 	}
+	*/
 
 	/**
 	 * this method will determine if there is supposed to be rain within the hour.

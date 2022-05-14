@@ -15,6 +15,12 @@ public class APICaller{
     // Create a new value object to hold the URL
     private URL url;
 
+    /**
+     * constructor for the APICaller class.
+     * @param latitude a double of the latitude
+     * @param longitude a double of the longitude
+     * @throws MalformedURLException
+     */
     public APICaller(double latitude, double longitude) throws MalformedURLException{
         lat = latitude;
         lon = longitude;
@@ -24,6 +30,11 @@ public class APICaller{
     }
 
 
+    /**
+     * this method retrieves the json file from the api
+     * @return a String of the json file
+     * @throws IOException
+     */
     public String getData() throws IOException {
         // Open a connection on the URL and cast the response
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -40,6 +51,7 @@ public class APICaller{
         return in.readLine();
     }
 
+    /*
     public void setLat(double latitude){
         lat = latitude;
     }
@@ -47,5 +59,5 @@ public class APICaller{
     public void setLon(double longitude){
         lat = longitude;
     }
-
+*/
 }

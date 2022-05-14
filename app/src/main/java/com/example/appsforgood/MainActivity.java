@@ -177,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
 
             thread.start();
             try {
-                thread.sleep(5000);
+                thread.sleep(2000);
             } //to let the parsing thread finish it's parsing before progressing on main thread
             catch (InterruptedException e) {
                 e.printStackTrace();

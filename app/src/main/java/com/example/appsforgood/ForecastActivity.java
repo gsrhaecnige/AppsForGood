@@ -132,7 +132,7 @@ public class ForecastActivity extends MainActivity {
         thread.start();
 
         try {
-            thread.sleep(3000);
+            thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

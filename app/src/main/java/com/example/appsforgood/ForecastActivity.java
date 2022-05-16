@@ -1,20 +1,22 @@
 package com.example.appsforgood;
 
-import androidx.annotation.RequiresApi;
-
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.appsforgood.data.Weather__1;
+import androidx.annotation.RequiresApi;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.ArrayList;
+
+//import java.time.LocalDateTime;
+
+//import java.time.LocalDateTime;
 
 public class ForecastActivity extends MainActivity {
 
@@ -22,12 +24,13 @@ public class ForecastActivity extends MainActivity {
     private TextView textView1, textView2, textView3, textView4, textView5, textView6,
             textView7, textView8, textView9, textView10, textView11, textView12;
     private ImageView iconImg;
-    int temp, feels, hum, windSpeed, windDeg, rainChance, cloudCoverage;
+    int temp, feels, hum, windSpeed, windDeg, rainChance, cloudCoverage,  clockTime;
     double uvi;
     private String weatherList;
     private String icon;
 
     private Drawable iconDraw;
+    private static final String TAG = "ForecastActivity";
 
     /**
      * Loads the Forecast view
@@ -132,7 +135,7 @@ public class ForecastActivity extends MainActivity {
         thread.start();
 
         try {
-            thread.sleep(2000);
+            thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -147,18 +150,35 @@ public class ForecastActivity extends MainActivity {
         windText.setText(windSpeed + " mph");
         descriptionText.setText("Cloud Coverage: " + cloudCoverage + "%");
 
-        textView1.setText(militaryTime(getTime(), 1)  + ":00" +"\n" + Integer.toString((int) getHourly(0)) + "\u00B0");
-        textView2.setText(militaryTime(getTime(), 2)  + ":00" +"\n" + Integer.toString((int) getHourly(1)) + "\u00B0");
-        textView3.setText(militaryTime(getTime(), 3)  + ":00" +"\n" + Integer.toString((int) getHourly(2)) + "\u00B0");
-        textView4.setText(militaryTime(getTime(), 4)  + ":00" +"\n" + Integer.toString((int) getHourly(3)) + "\u00B0");
-        textView5.setText(militaryTime(getTime(), 5)  + ":00" +"\n" + Integer.toString((int) getHourly(4)) + "\u00B0");
-        textView6.setText(militaryTime(getTime(), 6)  + ":00" +"\n" + Integer.toString((int) getHourly(5)) + "\u00B0");
-        textView7.setText(militaryTime(getTime(), 7)  + ":00" +"\n" + Integer.toString((int) getHourly(6)) + "\u00B0");
-        textView8.setText(militaryTime(getTime(), 8)  + ":00" +"\n" + Integer.toString((int) getHourly(7)) + "\u00B0");
-        textView9.setText(militaryTime(getTime(), 9)  + ":00" +"\n" + Integer.toString((int)getHourly(8)) + "\u00B0");
-        textView10.setText(militaryTime(getTime(), 10)  + ":00" +"\n" + Integer.toString((int) getHourly(9)) + "\u00B0");
-        textView11.setText(militaryTime(getTime(), 11)  + ":00" +"\n" + Integer.toString((int) getHourly(10)) + "\u00B0");
-        textView12.setText(militaryTime(getTime(), 12) + ":00" +"\n" + Integer.toString((int) getHourly(11)) + "\u00B0");
+
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                    clockTime = getTime();
+            }
+        });
+
+        thread2.start();
+        try {
+            thread2.sleep(1500);
+        } //to let the parsing thread finish it's parsing before progressing on main thread
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        textView1.setText(militaryTime(clockTime, 1)  + ":00" +"\n" + Integer.toString((int) getHourly(0)) + "\u00B0");
+        textView2.setText(militaryTime(clockTime, 2)  + ":00" +"\n" + Integer.toString((int) getHourly(1)) + "\u00B0");
+        textView3.setText(militaryTime(clockTime, 3)  + ":00" +"\n" + Integer.toString((int) getHourly(2)) + "\u00B0");
+        textView4.setText(militaryTime(clockTime, 4)  + ":00" +"\n" + Integer.toString((int) getHourly(3)) + "\u00B0");
+        textView5.setText(militaryTime(clockTime, 5)  + ":00" +"\n" + Integer.toString((int) getHourly(4)) + "\u00B0");
+        textView6.setText(militaryTime(clockTime, 6)  + ":00" +"\n" + Integer.toString((int) getHourly(5)) + "\u00B0");
+        textView7.setText(militaryTime(clockTime, 7)  + ":00" +"\n" + Integer.toString((int) getHourly(6)) + "\u00B0");
+        textView8.setText(militaryTime(clockTime, 8)  + ":00" +"\n" + Integer.toString((int) getHourly(7)) + "\u00B0");
+        textView9.setText(militaryTime(clockTime, 9)  + ":00" +"\n" + Integer.toString((int)getHourly(8)) + "\u00B0");
+        textView10.setText(militaryTime(clockTime, 10)  + ":00" +"\n" + Integer.toString((int) getHourly(9)) + "\u00B0");
+        textView11.setText(militaryTime(clockTime, 11)  + ":00" +"\n" + Integer.toString((int) getHourly(10)) + "\u00B0");
+        textView12.setText(militaryTime(clockTime, 12) + ":00" +"\n" + Integer.toString((int) getHourly(11)) + "\u00B0");
 
     }
 
@@ -189,8 +209,14 @@ public class ForecastActivity extends MainActivity {
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private int getTime() {
-        LocalDateTime date = LocalDateTime.now();
-        return date.getHour();
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            Log.d(TAG, "getCurrentDateTime: greater than O");
+            LocalDateTime date = LocalDateTime.now();
+            return date.getHour();
+        } else{
+            Log.d(TAG, "getCurrentDateTime: less than O");
+           return 0;
+        }
     }
 
     /*

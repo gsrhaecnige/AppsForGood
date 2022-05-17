@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView shoesText, topText, bottomsText, accText;
     private ImageView iconImg;
     private View weatherButton;
+
+    private ImageView loading;
+
     private double lat, lon;
     private FusedLocationProviderClient fusedLocationProviderClient;
     private static final String TAG = "MainActivity";

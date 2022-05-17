@@ -150,6 +150,7 @@ public class ForecastActivity extends MainActivity {
         windText.setText(windSpeed + " mph");
         descriptionText.setText("Cloud Coverage: " + cloudCoverage + "%");
 
+        thread.interrupt();
 
         Thread thread2 = new Thread(new Runnable() {
             @Override
@@ -180,6 +181,7 @@ public class ForecastActivity extends MainActivity {
         textView11.setText(militaryTime(clockTime, 11)  + ":00" +"\n" + Integer.toString((int) getHourly(10)) + "\u00B0");
         textView12.setText(militaryTime(clockTime, 12) + ":00" +"\n" + Integer.toString((int) getHourly(11)) + "\u00B0");
 
+        thread2.interrupt();
     }
 
     /**

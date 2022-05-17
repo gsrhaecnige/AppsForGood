@@ -182,7 +182,6 @@ public class MainActivity extends AppCompatActivity {
             catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             iconImg.setImageDrawable(iconDraw);
 
             isRaining = jsonParser.rain();
@@ -201,6 +200,9 @@ public class MainActivity extends AppCompatActivity {
             bottomsText.setText(bottoms);
             shoesText.setText(shoes);
             accText.setText(acc);
+
+            thread.interrupt();
+
         }
     }
 
@@ -335,12 +337,10 @@ public class MainActivity extends AppCompatActivity {
      * Transitions to Main activity
      * @param view the current View
      */
-    /*public void performMain(View view) {
+    public void performMain(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
-     */
 
     /**
      * Gets the date in the format "Weekday, Month Day, Time Timezone"

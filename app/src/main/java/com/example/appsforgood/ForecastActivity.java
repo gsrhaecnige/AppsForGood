@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-// :)
+// :) :)
 import androidx.annotation.RequiresApi;
 
 import java.io.IOException;
